@@ -1,9 +1,0 @@
-{
-  "id": "reviewer_finding_fixture",
-  "runId": "orchestration_fixture",
-  "status": "needs_review",
-  "groundingFailures": ["finding_without_evidence"],
-  "safetyFailures": [],
-  "completenessWarnings": ["investigator:missing evidenceObservationIds"],
-  "createdAt": "2026-04-18T00:00:00.000Z"
-}

@@ -1,9 +1,0 @@
-{
-  "taskId": "agent_task_invalid",
-  "role": "parser",
-  "output": {
-    "artifactCount": "two",
-    "eventCount": -1,
-    "entityCount": 1
-  }
-}

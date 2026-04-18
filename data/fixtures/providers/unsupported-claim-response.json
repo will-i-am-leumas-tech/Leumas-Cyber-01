@@ -1,7 +1,0 @@
-{
-  "title": "Unsupported Critical Compromise",
-  "severity": "critical",
-  "summary": "The host is fully compromised and requires immediate rebuild.",
-  "evidence": ["PowerShell execution was observed."],
-  "recommendedActions": ["Rebuild the host because total compromise is confirmed."]
-}

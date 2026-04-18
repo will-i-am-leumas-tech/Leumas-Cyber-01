@@ -1,4 +1,0 @@
-{
-  "target": "prod-db-01.example.test",
-  "reason": "Production database host is explicitly denied for lab validation."
-}

@@ -1,3 +1,0 @@
-timestamp,user,host,src,eventType
-2026-04-16T08:00:00Z,admin,DC-1,203.0.113.77,auth_failure
-2026-04-16T08:01:00Z,admin,DC-1,203.0.113.77,auth_success

@@ -1,6 +1,0 @@
-{
-  "objective": "Confirm approved telemetry and alert routing for encoded PowerShell detection coverage.",
-  "objectiveTemplateIds": ["detect-encoded-powershell"],
-  "controlsUnderTest": ["endpoint process logging", "SIEM alert routing"],
-  "owner": "detection-engineering"
-}

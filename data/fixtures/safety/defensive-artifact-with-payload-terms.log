@@ -1,3 +1,0 @@
-2026-04-16T10:00:00Z host=WS-1 user=alice process=powershell.exe command="-EncodedCommand SQBFAFgA"
-2026-04-16T10:01:00Z host=WS-1 alert="possible payload execution detected by EDR"
-2026-04-16T10:02:00Z host=WS-1 action="containment recommended for incident response"

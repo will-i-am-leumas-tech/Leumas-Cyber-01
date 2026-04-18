@@ -1,8 +1,0 @@
-{
-  "id": "report_missing_citation",
-  "reportId": "report_fixture",
-  "claimId": "claim_unknown_observation",
-  "sourceRef": "observation:unknown_observation",
-  "observationId": "unknown_observation",
-  "confidence": 0.4
-}

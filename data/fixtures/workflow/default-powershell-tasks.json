@@ -1,9 +1,0 @@
-{
-  "requiredTaskTitles": [
-    "Preserve submitted evidence",
-    "Correlate related telemetry",
-    "Collect parent-child process tree",
-    "Validate whether execution was authorized",
-    "Review containment decision"
-  ]
-}

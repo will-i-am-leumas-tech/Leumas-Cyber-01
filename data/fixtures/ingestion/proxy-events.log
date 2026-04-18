@@ -1,2 +1,0 @@
-2026-04-16T09:14:01Z method=GET user=alex@example.test src=10.10.4.21 dst_domain=login.contoso.example url=https://login.contoso.example/session status=200 category=uncategorized action=allowed
-2026-04-16T09:15:33Z method=GET user=alex@example.test src=10.10.4.21 dst_domain=payloads.example.test url=https://payloads.example.test/update.bin status=403 category=malware action=blocked

@@ -1,6 +1,5 @@
-node_modules
-dist
-tmp
-data
-.git
-.github
+node_modules/
+dist/
+tmp/
+data/
+tests/
