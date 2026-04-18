@@ -1,0 +1,44 @@
+name: Security
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "22 8 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Secret Scan
+        run: npm run security:scan
+
+      - name: Dependency Audit
+        run: npm audit --omit=dev
+
+      - name: Generate SBOM
+        run: npm run security:sbom
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: leumas-cyber-sbom
+          path: tmp/sbom.json

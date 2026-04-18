@@ -1,0 +1,14 @@
+{
+  "indicators": [
+    {
+      "type": "domain",
+      "value": "very-long-suspicious-subdomain-used-for-layout-regression-testing.example-threat.test",
+      "normalized": "very-long-suspicious-subdomain-used-for-layout-regression-testing.example-threat.test"
+    },
+    {
+      "type": "url",
+      "value": "https://example-threat.test/a/very/long/path/that/should/wrap/inside/the/workspace/evidence/panel/without/pushing/the/layout",
+      "normalized": "https://example-threat.test/a/very/long/path/that/should/wrap/inside/the/workspace/evidence/panel/without/pushing/the/layout"
+    }
+  ]
+}

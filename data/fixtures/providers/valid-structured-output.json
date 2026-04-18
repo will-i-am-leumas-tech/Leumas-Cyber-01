@@ -1,0 +1,5 @@
+{
+  "provider": "local-mock",
+  "mode": "alert",
+  "deterministic": true
+}

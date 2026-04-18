@@ -1,0 +1,23 @@
+[
+  {
+    "alertId": "sentinel_alert_001",
+    "timestamp": "2026-04-16T10:15:00Z",
+    "workspace": "soc-prod",
+    "severity": "high",
+    "title": "Suspicious PowerShell Execution",
+    "host": "WS-42",
+    "user": "CORP\\j.smith",
+    "srcIp": "203.0.113.24",
+    "query": "SecurityEvent | where EventID == 4688"
+  },
+  {
+    "alertId": "sentinel_alert_002",
+    "timestamp": "2026-04-16T09:01:02Z",
+    "workspace": "soc-prod",
+    "severity": "medium",
+    "title": "Failed Login Burst Followed By Success",
+    "user": "admin",
+    "srcIp": "203.0.113.10",
+    "query": "SigninLogs | where ResultType != 0"
+  }
+]

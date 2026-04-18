@@ -1,0 +1,8 @@
+{
+  "connectorId": "mock-siem",
+  "operation": "delete_events",
+  "actor": "analyst@example.test",
+  "parameters": {
+    "query": "admin"
+  }
+}

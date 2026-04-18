@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-04-16T11:05:00Z",
+  "source": "identity",
+  "user": "jane.analyst@example.test",
+  "username": "CORP\\jane.analyst",
+  "event": "failed login",
+  "srcIp": "203.0.113.88",
+  "notes": "Review without exposing the user's email address to model providers."
+}

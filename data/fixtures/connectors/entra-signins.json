@@ -1,0 +1,20 @@
+[
+  {
+    "signInId": "entra_signin_001",
+    "timestamp": "2026-04-16T09:00:00Z",
+    "userPrincipalName": "admin@example.test",
+    "ipAddress": "203.0.113.10",
+    "result": "failure",
+    "riskLevel": "medium",
+    "conditionalAccessStatus": "notApplied"
+  },
+  {
+    "signInId": "entra_signin_002",
+    "timestamp": "2026-04-16T09:01:02Z",
+    "userPrincipalName": "admin@example.test",
+    "ipAddress": "203.0.113.10",
+    "result": "success",
+    "riskLevel": "high",
+    "conditionalAccessStatus": "notApplied"
+  }
+]

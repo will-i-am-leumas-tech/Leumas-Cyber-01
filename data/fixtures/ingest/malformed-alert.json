@@ -1,0 +1,7 @@
+{
+  "timestamp": "not-a-real-date",
+  "host": "WS-99",
+  "user": "CORP\\broken",
+  "process": "powershell.exe",
+  "commandLine": "powershell.exe -NoProfile"
+}

@@ -1,0 +1,5 @@
+2026-04-16T09:00:00Z failed login user=admin src=203.0.113.10 reason=invalid_password
+2026-04-16T09:00:15Z failed login user=admin src=203.0.113.10 reason=invalid_password
+2026-04-16T09:00:31Z failed login user=admin src=203.0.113.10 reason=invalid_password
+2026-04-16T09:00:45Z failed login user=admin src=203.0.113.10 reason=invalid_password
+2026-04-16T09:01:02Z successful login user=admin src=203.0.113.10 mfa=not_challenged

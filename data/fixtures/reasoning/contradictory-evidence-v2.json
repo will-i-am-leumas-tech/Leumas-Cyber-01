@@ -1,0 +1,19 @@
+{
+  "title": "Suspicious PowerShell Execution",
+  "severity": "high",
+  "confidence": 0.82,
+  "category": "execution",
+  "summary": "PowerShell execution includes encoded command behavior.",
+  "evidence": [
+    "PowerShell execution was observed.",
+    "Command line contains encoded-command behavior.",
+    "Change ticket says this activity was authorized maintenance."
+  ],
+  "recommendedActions": [
+    "Confirm whether the PowerShell activity was authorized administrative work."
+  ],
+  "indicators": [],
+  "timeline": [],
+  "reportMarkdown": "# Report",
+  "notes": []
+}

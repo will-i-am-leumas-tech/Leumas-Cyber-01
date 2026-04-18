@@ -1,0 +1,14 @@
+{
+  "value": [
+    {
+      "createdDateTime": "2026-04-16T16:10:00Z",
+      "userId": "user-123",
+      "userPrincipalName": "analyst@example.test",
+      "appDisplayName": "Azure Portal",
+      "resourceDisplayName": "Microsoft Azure Management",
+      "ipAddress": "203.0.113.55",
+      "riskLevelAggregated": "high",
+      "conditionalAccessStatus": "failure"
+    }
+  ]
+}

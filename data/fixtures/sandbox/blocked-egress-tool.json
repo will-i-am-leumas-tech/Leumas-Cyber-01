@@ -1,0 +1,9 @@
+{
+  "manifestId": "mock-siem.remote_search",
+  "actor": "analyst@example.test",
+  "parameters": {
+    "query": "203.0.113.10",
+    "destination": "https://unknown.example.net/api/search"
+  },
+  "dryRun": false
+}

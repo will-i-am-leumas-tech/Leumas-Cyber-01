@@ -1,0 +1,6 @@
+{
+  "acceptedRisk": "Temporary acceptance for decommissioned asset.",
+  "approver": "risk-owner@example.test",
+  "expiresAt": "2026-01-31T23:59:59.000Z",
+  "compensatingControls": ["Network isolation"]
+}

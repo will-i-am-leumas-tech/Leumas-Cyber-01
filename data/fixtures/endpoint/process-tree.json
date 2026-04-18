@@ -1,0 +1,31 @@
+[
+  {
+    "timestamp": "2026-04-16T10:15:00Z",
+    "host": "WS-42",
+    "user": "CORP\\j.smith",
+    "eventType": "process_create",
+    "processGuid": "proc-powershell",
+    "parentProcessGuid": "proc-winword",
+    "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "commandLine": "powershell.exe -EncodedCommand SQBFAFgA"
+  },
+  {
+    "timestamp": "2026-04-16T10:12:00Z",
+    "host": "WS-42",
+    "user": "CORP\\j.smith",
+    "eventType": "process_create",
+    "processGuid": "proc-winword",
+    "image": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "commandLine": "WINWORD.EXE document.docm"
+  },
+  {
+    "timestamp": "2026-04-16T10:18:00Z",
+    "host": "WS-42",
+    "user": "CORP\\j.smith",
+    "eventType": "process_create",
+    "processGuid": "proc-cmd",
+    "parentProcessGuid": "proc-powershell",
+    "image": "C:\\Windows\\System32\\cmd.exe",
+    "commandLine": "cmd.exe /c whoami"
+  }
+]

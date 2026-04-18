@@ -1,0 +1,130 @@
+{
+  "categories": [
+    {
+      "category": "Network & Traffic-Based Attacks",
+      "definition": "Attacks that target network infrastructure or traffic flow to disrupt, intercept, or manipulate communications.",
+      "attacks": [
+        {"title": "Denial of Service (DoS)", "definition": "Overwhelms a system to make it unavailable.", "how_it_works": "Single source floods a target with requests."},
+        {"title": "Distributed Denial of Service (DDoS)", "definition": "Uses many systems to overwhelm a target.", "how_it_works": "Botnets send massive traffic simultaneously."},
+        {"title": "Amplification Attacks", "definition": "Uses third-party servers to amplify traffic.", "how_it_works": "Small spoofed requests generate large responses to victim."},
+        {"title": "SYN/UDP/ICMP Floods", "definition": "Protocol-based flooding attacks.", "how_it_works": "Large volumes of packets exhaust resources."},
+        {"title": "Man-in-the-Middle (MitM)", "definition": "Intercepts communication between parties.", "how_it_works": "Attacker relays and possibly alters data in transit."},
+        {"title": "ARP Spoofing", "definition": "Manipulates local network routing.", "how_it_works": "Fake ARP messages redirect traffic."},
+        {"title": "DNS Spoofing", "definition": "Redirects users to malicious sites.", "how_it_works": "Corrupt DNS records point to attacker servers."},
+        {"title": "Packet Sniffing", "definition": "Captures network traffic.", "how_it_works": "Monitoring packets reveals sensitive data."}
+      ]
+    },
+    {
+      "category": "Web Application Attacks",
+      "definition": "Attacks exploiting vulnerabilities in web apps.",
+      "attacks": [
+        {"title": "SQL Injection", "definition": "Injects malicious SQL queries.", "how_it_works": "Unsanitized input executes in database."},
+        {"title": "Cross-Site Scripting (XSS)", "definition": "Injects scripts into web pages.", "how_it_works": "Runs in victim browser to steal data."},
+        {"title": "CSRF", "definition": "Forces unintended user actions.", "how_it_works": "User unknowingly submits authenticated requests."},
+        {"title": "RCE", "definition": "Executes code remotely.", "how_it_works": "Exploits vulnerabilities to run commands."},
+        {"title": "LFI", "definition": "Accesses local files.", "how_it_works": "Manipulates file paths."},
+        {"title": "RFI", "definition": "Includes remote files.", "how_it_works": "Executes external malicious files."},
+        {"title": "SSRF", "definition": "Forces server requests.", "how_it_works": "Server accesses unintended resources."},
+        {"title": "Command Injection", "definition": "Executes system commands.", "how_it_works": "Input is passed to shell."},
+        {"title": "Directory Traversal", "definition": "Accesses restricted paths.", "how_it_works": "Uses ../ to escape directories."},
+        {"title": "Clickjacking", "definition": "Hijacks user clicks.", "how_it_works": "Invisible overlays trick interaction."},
+        {"title": "Open Redirect", "definition": "Redirects users maliciously.", "how_it_works": "Unvalidated URLs lead elsewhere."}
+      ]
+    },
+    {
+      "category": "Social Engineering",
+      "definition": "Manipulates people to gain access.",
+      "attacks": [
+        {"title": "Phishing", "definition": "Fraud emails steal data.", "how_it_works": "Users tricked into entering credentials."},
+        {"title": "Spear Phishing", "definition": "Targeted phishing.", "how_it_works": "Personalized deception."},
+        {"title": "Whaling", "definition": "Targets executives.", "how_it_works": "Impersonates authority."},
+        {"title": "Smishing", "definition": "SMS phishing.", "how_it_works": "Malicious text links."},
+        {"title": "Vishing", "definition": "Voice phishing.", "how_it_works": "Phone scams extract info."},
+        {"title": "Pretexting", "definition": "Fake scenario deception.", "how_it_works": "Builds trust to get info."},
+        {"title": "Baiting", "definition": "Entices victims.", "how_it_works": "Uses infected media."},
+        {"title": "Tailgating", "definition": "Physical access exploit.", "how_it_works": "Follows authorized users."}
+      ]
+    },
+    {
+      "category": "Malware & Code-Based",
+      "definition": "Malicious software attacks.",
+      "attacks": [
+        {"title": "Trojan", "definition": "Disguised malicious software.", "how_it_works": "Appears legitimate."},
+        {"title": "Worm", "definition": "Self-replicating malware.", "how_it_works": "Spreads automatically."},
+        {"title": "Ransomware", "definition": "Locks data for payment.", "how_it_works": "Encrypts files."},
+        {"title": "Spyware", "definition": "Tracks user activity.", "how_it_works": "Steals information silently."},
+        {"title": "Rootkit", "definition": "Hides system compromise.", "how_it_works": "Masks malicious activity."},
+        {"title": "Botnet", "definition": "Network of infected devices.", "how_it_works": "Controlled remotely."},
+        {"title": "Backdoor", "definition": "Hidden access point.", "how_it_works": "Bypasses authentication."},
+        {"title": "Fileless Malware", "definition": "Runs in memory.", "how_it_works": "Avoids disk detection."}
+      ]
+    },
+    {
+      "category": "Authentication & Access",
+      "definition": "Attacks targeting login systems.",
+      "attacks": [
+        {"title": "Brute Force", "definition": "Tries many passwords.", "how_it_works": "Automated guessing."},
+        {"title": "Credential Stuffing", "definition": "Uses leaked credentials.", "how_it_works": "Reuses known passwords."},
+        {"title": "Password Spraying", "definition": "Tries common passwords.", "how_it_works": "Across many accounts."},
+        {"title": "Session Hijacking", "definition": "Takes over sessions.", "how_it_works": "Steals session tokens."},
+        {"title": "Token Theft", "definition": "Steals auth tokens.", "how_it_works": "Access without login."},
+        {"title": "Privilege Escalation", "definition": "Gains higher access.", "how_it_works": "Exploits permission flaws."}
+      ]
+    },
+    {
+      "category": "Wireless & IoT",
+      "definition": "Attacks on wireless and smart devices.",
+      "attacks": [
+        {"title": "WiFi Deauth", "definition": "Disconnects users.", "how_it_works": "Sends fake deauth packets."},
+        {"title": "Evil Twin", "definition": "Fake WiFi network.", "how_it_works": "Users connect unknowingly."},
+        {"title": "Rogue Access Point", "definition": "Unauthorized AP.", "how_it_works": "Captures traffic."},
+        {"title": "Bluetooth Attacks", "definition": "Exploits Bluetooth.", "how_it_works": "Steals or sends data."},
+        {"title": "IoT Botnets", "definition": "Compromised IoT networks.", "how_it_works": "Mass exploitation."}
+      ]
+    },
+    {
+      "category": "Supply Chain",
+      "definition": "Attacks through software dependencies.",
+      "attacks": [
+        {"title": "Dependency Confusion", "definition": "Malicious package injection.", "how_it_works": "Higher priority fake packages."},
+        {"title": "Typosquatting", "definition": "Fake package names.", "how_it_works": "Mistyped installs."},
+        {"title": "Library Injection", "definition": "Malicious code in libs.", "how_it_works": "Trusted dependency compromise."},
+        {"title": "Build Pipeline Compromise", "definition": "CI/CD attack.", "how_it_works": "Injects during build."},
+        {"title": "CI/CD Attacks", "definition": "Pipeline exploitation.", "how_it_works": "Targets automation systems."}
+      ]
+    },
+    {
+      "category": "Data & Exfiltration",
+      "definition": "Stealing or leaking data.",
+      "attacks": [
+        {"title": "Data Exfiltration", "definition": "Steals data.", "how_it_works": "Transfers out covertly."},
+        {"title": "Insider Threat", "definition": "Internal misuse.", "how_it_works": "Authorized abuse."},
+        {"title": "API Abuse", "definition": "Misuses APIs.", "how_it_works": "Excessive or unauthorized calls."},
+        {"title": "Cloud Exploitation", "definition": "Misconfig abuse.", "how_it_works": "Open storage access."},
+        {"title": "Unauthorized DB Access", "definition": "Accessing databases.", "how_it_works": "Weak security exploited."}
+      ]
+    },
+    {
+      "category": "Client-Side & Browser",
+      "definition": "Attacks targeting user environments.",
+      "attacks": [
+        {"title": "DOM XSS", "definition": "Client-side script injection.", "how_it_works": "Manipulates DOM."},
+        {"title": "Browser Exploits", "definition": "Browser vulnerabilities.", "how_it_works": "Executes malicious code."},
+        {"title": "Malicious Extensions", "definition": "Compromised plugins.", "how_it_works": "Steals data."},
+        {"title": "Drive-by Downloads", "definition": "Auto malware download.", "how_it_works": "Triggered on visit."},
+        {"title": "Watering Hole", "definition": "Compromised trusted sites.", "how_it_works": "Targets frequent users."}
+      ]
+    },
+    {
+      "category": "Advanced & Strategic",
+      "definition": "Complex, high-level attack strategies.",
+      "attacks": [
+        {"title": "Zero-Day", "definition": "Unknown vulnerabilities.", "how_it_works": "Exploited before patch."},
+        {"title": "APT", "definition": "Long-term targeted attack.", "how_it_works": "Stealth persistence."},
+        {"title": "LOLbins", "definition": "Uses legit tools.", "how_it_works": "Abuses system binaries."},
+        {"title": "Red Teaming", "definition": "Simulated attacks.", "how_it_works": "Tests defenses."},
+        {"title": "Exploit Chaining", "definition": "Combines exploits.", "how_it_works": "Multiple vulnerabilities used."}
+      ]
+    }
+  ]
+}

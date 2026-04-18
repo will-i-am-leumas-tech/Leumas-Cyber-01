@@ -1,0 +1,23 @@
+{
+  "messages": [
+    {
+      "timestamp": "2026-04-16T09:10:22Z",
+      "recipient": "alex@example.test",
+      "sender": "payroll-alert@example.org",
+      "subject": "Payroll update requires review",
+      "verdict": "phishing",
+      "url": "https://login.contoso.example/session",
+      "srcIp": "198.51.100.24",
+      "messageId": "msg-001"
+    },
+    {
+      "timestamp": "2026-04-16T09:11:08Z",
+      "recipient": "alex@example.test",
+      "sender": "security@example.org",
+      "subject": "Reported suspicious message",
+      "verdict": "benign",
+      "srcIp": "198.51.100.25",
+      "messageId": "msg-002"
+    }
+  ]
+}

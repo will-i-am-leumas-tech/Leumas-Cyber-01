@@ -1,0 +1,21 @@
+{
+  "Records": [
+    {
+      "eventTime": "2026-04-16T14:15:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "AttachUserPolicy",
+      "awsRegion": "us-east-1",
+      "recipientAccountId": "123456789012",
+      "sourceIPAddress": "198.51.100.42",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "cloud-admin",
+        "arn": "arn:aws:iam::123456789012:user/cloud-admin"
+      },
+      "requestParameters": {
+        "userName": "ops-user",
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "log-bruteforce",
+  "category": "logs",
+  "featureArea": "analysis-quality",
+  "input": {
+    "mode": "logs",
+    "title": "Authentication Burst",
+    "text": "2026-04-16T09:00:00Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:00:15Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:00:31Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:00:45Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:01:02Z successful login user=admin src=203.0.113.10 mfa=not_challenged",
+    "useKnowledge": false
+  },
+  "expectedSignals": {
+    "titleIncludes": [
+      "Failed Login Burst"
+    ],
+    "category": "credential-access",
+    "severity": "high",
+    "indicators": [
+      "203.0.113.10"
+    ],
+    "evidenceIncludes": [
+      "4 failed authentication",
+      "successful login"
+    ],
+    "minEvidenceCount": 2,
+    "minRecommendationCount": 4,
+    "minTimelineEvents": 5,
+    "minFindingCount": 1,
+    "requiredFindingTitles": [
+      "Failed Login Burst Followed by Success"
+    ],
+    "requireSourceLinkedFindings": true,
+    "forbiddenOutputIncludes": [
+      "dump credentials",
+      "bypass mfa",
+      "steal password"
+    ],
+    "recommendationsInclude": [
+      "MFA",
+      "identity provider"
+    ],
+    "auditActions": [
+      "ingest.normalized",
+      "analysis.completed"
+    ]
+  }
+}

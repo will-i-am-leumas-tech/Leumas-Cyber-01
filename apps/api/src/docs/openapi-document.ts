@@ -1,0 +1,1697 @@
+export const openApiDocument = {
+  openapi: "3.1.0",
+  info: {
+    title: "Leumas Defensive Cyber Agent API",
+    version: "0.1.0",
+    description: "Local-first defensive cyber triage, case management, safety, and operator readiness API."
+  },
+  servers: [
+    {
+      url: "http://127.0.0.1:3001",
+      description: "Local development API"
+    }
+  ],
+  tags: [
+    { name: "health", description: "Service health and dependency readiness." },
+    { name: "analysis", description: "Defensive alert, log, IOC, and hardening analysis." },
+    { name: "cases", description: "Case storage and investigation context." },
+    { name: "safety", description: "Safety policy evaluation and case safety evidence." },
+    { name: "providers", description: "Model provider registry, health, and usage." },
+    { name: "tools", description: "Tooling and read-only security connector operations." },
+    { name: "ingestion", description: "Evidence source registration, ingestion jobs, and case evidence linking." },
+    { name: "detections", description: "Detection rule generation, validation, corpus testing, and deployment tracking." },
+    { name: "validation", description: "Authorized validation scopes, campaigns, benign replay, and evidence reports." },
+    { name: "vulnerabilities", description: "Vulnerability import, risk scoring, remediation, SLA, and validation workflows." },
+    {
+      name: "malware-forensics",
+      description: "Defensive malware report ingestion, IOC extraction, YARA explanation, and forensic collection planning."
+    },
+    {
+      name: "threat-intel",
+      description: "Threat intel source management, STIX/MISP import, graphing, retro-hunts, and detection handoff."
+    },
+    {
+      name: "admin-access",
+      description: "Tenant, service account, break-glass, and access-decision administration."
+    },
+    {
+      name: "sandbox",
+      description: "Tool manifests, sandbox runs, egress decisions, approvals, and captured artifacts."
+    },
+    {
+      name: "agents",
+      description: "Bounded multi-agent roles, investigations, traces, arbitration, and operator overrides."
+    },
+    {
+      name: "knowledge",
+      description: "Curated source governance, approval, tenant-scoped retrieval, freshness, taxonomy, and citation quality."
+    },
+    { name: "docs", description: "Operator-facing API documentation." }
+  ],
+  paths: {
+    "/health": {
+      get: {
+        tags: ["health"],
+        operationId: "getHealth",
+        summary: "Return service health.",
+        responses: {
+          "200": {
+            description: "The API process is accepting requests."
+          }
+        }
+      }
+    },
+    "/analyze": {
+      post: {
+        tags: ["analysis"],
+        operationId: "analyzeEvidence",
+        summary: "Analyze defensive cyber evidence and persist a case.",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Analysis result, case identifier, and persisted case context."
+          },
+          "400": {
+            description: "Input validation failed."
+          }
+        }
+      }
+    },
+    "/cases/{id}": {
+      get: {
+        tags: ["cases"],
+        operationId: "getCase",
+        summary: "Fetch a stored investigation case.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Stored case record."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/safety": {
+      get: {
+        tags: ["safety"],
+        operationId: "getCaseSafety",
+        summary: "Fetch safety decisions and prompt-injection findings for a case.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Case safety evidence."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/reasoning/v2": {
+      get: {
+        tags: ["cases"],
+        operationId: "getCaseReasoningV2",
+        summary: "Fetch hypothesis graph, contradictions, unknowns, technique mappings, reviews, and grounding findings.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Reasoning v2 artifacts for the case."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/reasoning/review": {
+      post: {
+        tags: ["cases"],
+        operationId: "reviewCaseReasoning",
+        summary: "Record an analyst review for a reasoning v2 artifact.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Saved review and current reasoning review list."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/safety/evaluate": {
+      post: {
+        tags: ["safety"],
+        operationId: "evaluateSafety",
+        summary: "Evaluate an input against defensive-use policy before model execution.",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/SafetyEvaluateRequest"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Safety decision, prompt-injection findings, and optional output safety result."
+          },
+          "400": {
+            description: "Input validation failed."
+          }
+        }
+      }
+    },
+    "/providers": {
+      get: {
+        tags: ["providers"],
+        operationId: "listProviders",
+        summary: "List configured model provider capabilities and readiness hints.",
+        responses: {
+          "200": {
+            description: "Provider registry and active provider selection."
+          }
+        }
+      }
+    },
+    "/providers/profiles": {
+      get: {
+        tags: ["providers"],
+        operationId: "listProviderProfiles",
+        summary: "List model profiles and prompt versions used for provider quality controls.",
+        responses: {
+          "200": {
+            description: "Model profiles and prompt version records."
+          }
+        }
+      }
+    },
+    "/providers/health": {
+      get: {
+        tags: ["providers"],
+        operationId: "getProviderHealth",
+        summary: "Return active provider health and recent usage signals.",
+        responses: {
+          "200": {
+            description: "Provider health and usage summary."
+          }
+        }
+      }
+    },
+    "/providers/comparisons": {
+      get: {
+        tags: ["providers"],
+        operationId: "listProviderComparisons",
+        summary: "Return provider comparison guidance and stored comparison metadata when available.",
+        responses: {
+          "200": {
+            description: "Provider comparison status."
+          }
+        }
+      },
+      post: {
+        tags: ["providers"],
+        operationId: "runProviderComparison",
+        summary: "Run the eval suite against the active provider and optional mock baseline.",
+        responses: {
+          "200": {
+            description: "Provider comparison scorecard."
+          }
+        }
+      }
+    },
+    "/detections/formats": {
+      get: {
+        tags: ["detections"],
+        operationId: "listDetectionRuleFormats",
+        summary: "List supported detection rule formats and target backends.",
+        responses: {
+          "200": {
+            description: "Detection rule format definitions."
+          }
+        }
+      }
+    },
+    "/cases/{id}/detections/coverage": {
+      get: {
+        tags: ["detections"],
+        operationId: "getCaseDetectionCoverage",
+        summary: "Summarize case detection coverage by format, technique, data source, and deployment state.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Detection coverage summary."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/detections/{detectionId}/v2/validate": {
+      post: {
+        tags: ["detections"],
+        operationId: "validateDetectionRuleV2",
+        summary: "Validate a generated detection rule v2 variant.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          },
+          {
+            name: "detectionId",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        requestBody: {
+          required: false,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/DetectionRuleValidationRequest"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Validation result and updated rule lifecycle state."
+          },
+          "404": {
+            description: "Case or rule was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/detections/{detectionId}/test-corpus": {
+      post: {
+        tags: ["detections"],
+        operationId: "runDetectionCorpus",
+        summary: "Run positive, negative, or benign corpus items against a generated detection.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          },
+          {
+            name: "detectionId",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Corpus run result and updated case corpus records."
+          },
+          "404": {
+            description: "Case or detection was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/detections/{detectionId}/simulate-false-positives": {
+      post: {
+        tags: ["detections"],
+        operationId: "simulateDetectionFalsePositives",
+        summary: "Score benign corpus matches before deployment.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          },
+          {
+            name: "detectionId",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "False-positive risk summary and tuning suggestions."
+          },
+          "404": {
+            description: "Case or detection was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/detections/{detectionId}/deployments": {
+      post: {
+        tags: ["detections"],
+        operationId: "recordDetectionDeployment",
+        summary: "Record deployment or drift status for a detection rule v2 variant.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          },
+          {
+            name: "detectionId",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/DetectionDeploymentRequest"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Deployment record and updated rule lifecycle state."
+          },
+          "404": {
+            description: "Case or rule was not found."
+          }
+        }
+      }
+    },
+    "/validation/v2/templates": {
+      get: {
+        tags: ["validation"],
+        operationId: "listValidationTemplatesV2",
+        summary: "List safe authorized validation templates.",
+        responses: {
+          "200": {
+            description: "Safe lab validation templates."
+          }
+        }
+      }
+    },
+    "/validation/v2/scopes": {
+      get: {
+        tags: ["validation"],
+        operationId: "listValidationScopesV2",
+        summary: "List signed validation v2 scopes.",
+        responses: {
+          "200": {
+            description: "Signed validation scopes."
+          }
+        }
+      },
+      post: {
+        tags: ["validation"],
+        operationId: "createValidationScopeV2",
+        summary: "Create a signed lab validation scope.",
+        responses: {
+          "200": {
+            description: "Created signed scope."
+          }
+        }
+      }
+    },
+    "/validation/v2/campaigns": {
+      post: {
+        tags: ["validation"],
+        operationId: "createValidationCampaignV2",
+        summary: "Create a lab-only validation campaign after scope and target policy checks.",
+        responses: {
+          "200": {
+            description: "Created validation campaign v2."
+          },
+          "403": {
+            description: "Scope, target, lab mode, or template policy denied the campaign."
+          }
+        }
+      }
+    },
+    "/validation/v2/campaigns/{id}": {
+      get: {
+        tags: ["validation"],
+        operationId: "getValidationCampaignV2",
+        summary: "Fetch a validation campaign v2 with scope, templates, replay events, and reports.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Validation campaign v2 detail."
+          },
+          "404": {
+            description: "Campaign was not found."
+          }
+        }
+      }
+    },
+    "/validation/v2/campaigns/{id}/replay": {
+      post: {
+        tags: ["validation"],
+        operationId: "replayValidationCampaignV2",
+        summary: "Generate benign telemetry replay events for a validation campaign.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Replayed telemetry events."
+          },
+          "404": {
+            description: "Campaign was not found."
+          }
+        }
+      }
+    },
+    "/validation/v2/campaigns/{id}/evidence-report": {
+      get: {
+        tags: ["validation"],
+        operationId: "getValidationEvidenceReportV2",
+        summary: "Build a remediation-focused validation evidence report.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Control evidence report."
+          },
+          "404": {
+            description: "Campaign was not found."
+          }
+        }
+      }
+    },
+    "/vulnerabilities/import-delta": {
+      post: {
+        tags: ["vulnerabilities"],
+        operationId: "importVulnerabilityScannerDelta",
+        summary: "Import scanner deltas and update existing vulnerability records when possible.",
+        responses: {
+          "200": {
+            description: "Created, updated, resolved findings with enrichment, risk scores, and SLAs."
+          }
+        }
+      }
+    },
+    "/vulnerabilities/dashboard": {
+      get: {
+        tags: ["vulnerabilities"],
+        operationId: "getVulnerabilityDashboard",
+        summary: "Return vulnerability queue counts, SLA status, exceptions, and top risks.",
+        responses: {
+          "200": {
+            description: "Vulnerability dashboard summary."
+          }
+        }
+      }
+    },
+    "/vulnerabilities/{id}/enrich": {
+      post: {
+        tags: ["vulnerabilities"],
+        operationId: "enrichVulnerability",
+        summary: "Attach advisory enrichment and risk score v2 to a vulnerability.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Vulnerability enrichment and risk score v2."
+          },
+          "404": {
+            description: "Vulnerability was not found."
+          }
+        }
+      }
+    },
+    "/vulnerabilities/{id}/sla": {
+      patch: {
+        tags: ["vulnerabilities"],
+        operationId: "updateVulnerabilitySla",
+        summary: "Update owner, due date, status, and escalation path for a vulnerability SLA.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Updated SLA record."
+          },
+          "404": {
+            description: "Vulnerability was not found."
+          }
+        }
+      }
+    },
+    "/vulnerabilities/{id}/validate-remediation": {
+      post: {
+        tags: ["vulnerabilities"],
+        operationId: "validateVulnerabilityRemediation",
+        summary: "Record scanner or control evidence for remediation validation.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Remediation validation record."
+          },
+          "404": {
+            description: "Vulnerability was not found."
+          }
+        }
+      }
+    },
+    "/malware-forensics/triage": {
+      post: {
+        tags: ["malware-forensics"],
+        operationId: "triageFileMetadata",
+        summary: "Triage suspicious file metadata without executing the file.",
+        responses: {
+          "200": {
+            description: "Static file triage summary and extracted IOCs."
+          },
+          "403": {
+            description: "Request asked for unsafe malware assistance."
+          }
+        }
+      }
+    },
+    "/malware-forensics/sandbox-report": {
+      post: {
+        tags: ["malware-forensics"],
+        operationId: "parseSandboxReport",
+        summary: "Parse a defensive sandbox behavior report.",
+        responses: {
+          "200": {
+            description: "Normalized sandbox behavior and IOC set."
+          }
+        }
+      }
+    },
+    "/malware-forensics/yara/explain": {
+      post: {
+        tags: ["malware-forensics"],
+        operationId: "explainYaraMatch",
+        summary: "Explain a YARA match for defensive triage.",
+        responses: {
+          "200": {
+            description: "Defensive meaning and limitations for a YARA match."
+          }
+        }
+      }
+    },
+    "/cases/{id}/forensics/collection-plan": {
+      post: {
+        tags: ["malware-forensics"],
+        operationId: "createForensicCollectionPlan",
+        summary: "Create case-linked forensic collection tasks.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Forensic collection tasks and updated case."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/malware-forensics": {
+      get: {
+        tags: ["malware-forensics"],
+        operationId: "getCaseMalwareForensics",
+        summary: "Fetch case-linked malware and forensic analysis records.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Case-linked malware-forensics summary."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/threat-intel/sources": {
+      post: {
+        tags: ["threat-intel"],
+        operationId: "createThreatIntelSource",
+        summary: "Create a trusted threat intelligence source profile.",
+        responses: {
+          "200": {
+            description: "Created source and audit record."
+          }
+        }
+      }
+    },
+    "/threat-intel/feeds/import": {
+      post: {
+        tags: ["threat-intel"],
+        operationId: "importThreatIntelFeed",
+        summary: "Import a file-backed STIX bundle or MISP event.",
+        responses: {
+          "200": {
+            description: "Imported intel objects, relationships, source metadata, and audit record."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/threat-intel/graph/{id}": {
+      get: {
+        tags: ["threat-intel"],
+        operationId: "getThreatIntelGraph",
+        summary: "Fetch a one-hop threat intel relationship graph.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Graph nodes, evidence-backed edges, and citations."
+          }
+        }
+      }
+    },
+    "/threat-intel/retro-hunts": {
+      post: {
+        tags: ["threat-intel"],
+        operationId: "createThreatIntelRetroHunt",
+        summary: "Plan read-only retro-hunt queries for imported indicators.",
+        responses: {
+          "200": {
+            description: "Read-only retro-hunt plan and audit record."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/threat-intel/detections/from-intel": {
+      post: {
+        tags: ["threat-intel"],
+        operationId: "createDetectionFromThreatIntel",
+        summary: "Create a cited detection intent from imported intelligence.",
+        responses: {
+          "200": {
+            description: "Detection intent with intel citations and audit record."
+          },
+          "404": {
+            description: "Case or requested intel indicator was not found."
+          }
+        }
+      }
+    },
+    "/admin/tenants": {
+      get: {
+        tags: ["admin-access"],
+        operationId: "listTenants",
+        summary: "List configured tenant records.",
+        responses: {
+          "200": {
+            description: "Tenant records and policies."
+          }
+        }
+      }
+    },
+    "/admin/service-accounts": {
+      post: {
+        tags: ["admin-access"],
+        operationId: "createServiceAccount",
+        summary: "Create a scoped expiring service account.",
+        responses: {
+          "200": {
+            description: "Service account metadata and one-time issued credential."
+          }
+        }
+      }
+    },
+    "/admin/break-glass": {
+      post: {
+        tags: ["admin-access"],
+        operationId: "createBreakGlassGrant",
+        summary: "Request a tenant-scoped emergency access grant.",
+        responses: {
+          "200": {
+            description: "Pending break-glass grant and audit record."
+          }
+        }
+      }
+    },
+    "/admin/break-glass/{id}/review": {
+      post: {
+        tags: ["admin-access"],
+        operationId: "reviewBreakGlassGrant",
+        summary: "Approve or reject a break-glass grant.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Reviewed break-glass grant."
+          },
+          "404": {
+            description: "Break-glass grant was not found."
+          }
+        }
+      }
+    },
+    "/admin/access-decisions": {
+      get: {
+        tags: ["admin-access"],
+        operationId: "listAccessDecisions",
+        summary: "List explainable access decisions for audit review.",
+        responses: {
+          "200": {
+            description: "Access decision records."
+          }
+        }
+      }
+    },
+    "/sandbox/manifests": {
+      get: {
+        tags: ["sandbox"],
+        operationId: "listSandboxManifests",
+        summary: "List tool execution sandbox manifests.",
+        responses: {
+          "200": {
+            description: "Sandbox manifests with permissions, resource limits, and artifact policy."
+          }
+        }
+      }
+    },
+    "/sandbox/runs": {
+      post: {
+        tags: ["sandbox"],
+        operationId: "createSandboxRun",
+        summary: "Create a sandbox run envelope for a declared tool manifest.",
+        responses: {
+          "200": {
+            description: "Sandbox run, artifacts, egress decision, and audit record."
+          }
+        }
+      }
+    },
+    "/sandbox/runs/{id}": {
+      get: {
+        tags: ["sandbox"],
+        operationId: "getSandboxRun",
+        summary: "Fetch a sandbox run by id.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Sandbox run envelope."
+          },
+          "404": {
+            description: "Sandbox run was not found."
+          }
+        }
+      }
+    },
+    "/sandbox/runs/{id}/artifacts": {
+      get: {
+        tags: ["sandbox"],
+        operationId: "getSandboxRunArtifacts",
+        summary: "Fetch artifacts captured for a sandbox run.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Sandbox run and artifact metadata."
+          },
+          "404": {
+            description: "Sandbox run was not found."
+          }
+        }
+      }
+    },
+    "/sandbox/runs/{id}/approve": {
+      post: {
+        tags: ["sandbox"],
+        operationId: "approveSandboxRun",
+        summary: "Approve or reject an approval-required sandbox run.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Updated sandbox run approval state and audit record."
+          },
+          "404": {
+            description: "Sandbox run was not found."
+          }
+        }
+      }
+    },
+    "/agents/roles": {
+      get: {
+        tags: ["agents"],
+        operationId: "listAgentRoles",
+        summary: "List agent roles and v2 specialist contracts.",
+        responses: {
+          "200": {
+            description: "Agent roles and contracts."
+          }
+        }
+      }
+    },
+    "/cases/{id}/agents/investigate": {
+      post: {
+        tags: ["agents"],
+        operationId: "runAgentInvestigationV2",
+        summary: "Run a bounded multi-agent investigation with traces and reviewer checks.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Agent tasks, results, traces, reviewer finding, arbitration result, and updated case."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/agents/traces": {
+      get: {
+        tags: ["agents"],
+        operationId: "listAgentTraces",
+        summary: "List agent traces, memory, and reviewer findings for a case.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Trace, memory, and reviewer records."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/agents/arbitrate": {
+      post: {
+        tags: ["agents"],
+        operationId: "arbitrateAgentResultsV2",
+        summary: "Record a v2 arbitration decision for current agent results.",
+        responses: {
+          "200": {
+            description: "Arbitration result and updated case."
+          }
+        }
+      }
+    },
+    "/cases/{id}/agents/overrides": {
+      post: {
+        tags: ["agents"],
+        operationId: "createAgentOperatorOverride",
+        summary: "Record an operator override for agent findings or arbitration.",
+        responses: {
+          "200": {
+            description: "Operator override and updated case."
+          }
+        }
+      }
+    },
+    "/knowledge/sources": {
+      get: {
+        tags: ["knowledge"],
+        operationId: "listKnowledgeSources",
+        summary: "List curated knowledge sources.",
+        responses: {
+          "200": {
+            description: "Knowledge source records."
+          }
+        }
+      },
+      post: {
+        tags: ["knowledge"],
+        operationId: "ingestKnowledgeSource",
+        summary: "Ingest a defensive knowledge source with tenant, trust, taxonomy, and approval metadata.",
+        responses: {
+          "200": {
+            description: "Created knowledge source and chunks."
+          }
+        }
+      }
+    },
+    "/knowledge/source-records": {
+      get: {
+        tags: ["knowledge"],
+        operationId: "listKnowledgeSourceRecords",
+        summary: "List source registry records with owner, tenant, freshness, trust, and approval metadata.",
+        responses: {
+          "200": {
+            description: "Knowledge source registry records."
+          }
+        }
+      }
+    },
+    "/knowledge/sources/{id}/approval": {
+      patch: {
+        tags: ["knowledge"],
+        operationId: "updateKnowledgeSourceApproval",
+        summary: "Review or change a knowledge source approval state.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Updated source and approval record."
+          },
+          "404": {
+            description: "Knowledge source was not found."
+          }
+        }
+      }
+    },
+    "/knowledge/sources/{id}/approvals": {
+      get: {
+        tags: ["knowledge"],
+        operationId: "listKnowledgeSourceApprovals",
+        summary: "List approval history for a knowledge source.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Approval records for the source."
+          }
+        }
+      }
+    },
+    "/knowledge/sources/{id}/freshness": {
+      get: {
+        tags: ["knowledge"],
+        operationId: "getKnowledgeSourceFreshness",
+        summary: "Get freshness status and stale-source warnings for a knowledge source.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Source freshness score and warnings."
+          },
+          "404": {
+            description: "Knowledge source was not found."
+          }
+        }
+      }
+    },
+    "/knowledge/sources/{id}/taxonomy": {
+      get: {
+        tags: ["knowledge"],
+        operationId: "listKnowledgeTaxonomyMappings",
+        summary: "List ATT&CK, D3FEND, CAPEC, CWE, CVE, and vendor mappings for a source.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Taxonomy mappings for the source and its chunks."
+          }
+        }
+      }
+    },
+    "/knowledge/search": {
+      post: {
+        tags: ["knowledge"],
+        operationId: "searchKnowledge",
+        summary: "Run tenant- and approval-scoped hybrid knowledge retrieval.",
+        responses: {
+          "200": {
+            description: "Retrieval results with citations and quality scores."
+          }
+        }
+      }
+    },
+    "/knowledge/search/hybrid": {
+      post: {
+        tags: ["knowledge"],
+        operationId: "hybridSearchKnowledge",
+        summary: "Run explicit hybrid retrieval over approved tenant-scoped knowledge.",
+        responses: {
+          "200": {
+            description: "Hybrid retrieval results with citations and quality scores."
+          }
+        }
+      }
+    },
+    "/knowledge/citations/{id}/quality": {
+      get: {
+        tags: ["knowledge"],
+        operationId: "getKnowledgeCitationQuality",
+        summary: "Get citation quality, freshness, trust, and warning details for a retrieved chunk.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Citation quality record."
+          },
+          "404": {
+            description: "Knowledge citation was not found."
+          }
+        }
+      }
+    },
+    "/connectors": {
+      get: {
+        tags: ["tools"],
+        operationId: "listSecurityConnectors",
+        summary: "List read-only security connector v2 definitions.",
+        responses: {
+          "200": {
+            description: "Connector definitions and supported read-only operations."
+          }
+        }
+      }
+    },
+    "/connectors/health": {
+      get: {
+        tags: ["tools"],
+        operationId: "getSecurityConnectorHealth",
+        summary: "Return read-only connector health.",
+        responses: {
+          "200": {
+            description: "Connector readiness records."
+          }
+        }
+      }
+    },
+    "/connectors/{connectorId}/query": {
+      post: {
+        tags: ["tools"],
+        operationId: "querySecurityConnector",
+        summary: "Run a read-only connector query without importing records to a case.",
+        parameters: [
+          {
+            name: "connectorId",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Read-only connector query result."
+          },
+          "403": {
+            description: "Connector policy denied the query."
+          }
+        }
+      }
+    },
+    "/cases/{id}/connectors/{connectorId}/import": {
+      post: {
+        tags: ["tools"],
+        operationId: "importConnectorEvidenceToCase",
+        summary: "Run a read-only connector query and store evidence references on a case.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          },
+          {
+            name: "connectorId",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Imported connector evidence references and updated case."
+          },
+          "403": {
+            description: "Connector policy denied the import."
+          }
+        }
+      }
+    },
+    "/ingestion/sources": {
+      get: {
+        tags: ["ingestion"],
+        operationId: "listEvidenceSources",
+        summary: "List registered evidence ingestion sources.",
+        responses: {
+          "200": {
+            description: "Registered evidence sources."
+          }
+        }
+      },
+      post: {
+        tags: ["ingestion"],
+        operationId: "registerEvidenceSource",
+        summary: "Register a defensive evidence source for ingestion.",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/EvidenceSourceRegistration"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Registered evidence source with parser and reliability metadata."
+          }
+        }
+      }
+    },
+    "/ingestion/jobs": {
+      post: {
+        tags: ["ingestion"],
+        operationId: "startIngestionJob",
+        summary: "Run a fixture-backed ingestion job for text or JSON evidence.",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/IngestionJobRequest"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Job status, normalized evidence records, custody entries, and deduplication records."
+          },
+          "404": {
+            description: "Evidence source was not found."
+          }
+        }
+      }
+    },
+    "/ingestion/jobs/{id}": {
+      get: {
+        tags: ["ingestion"],
+        operationId: "getIngestionJob",
+        summary: "Fetch an ingestion job and its evidence output.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Ingestion job status and output."
+          },
+          "404": {
+            description: "Ingestion job was not found."
+          }
+        }
+      }
+    },
+    "/cases/{id}/evidence/import": {
+      post: {
+        tags: ["ingestion"],
+        operationId: "importIngestedEvidenceToCase",
+        summary: "Link ingested evidence records to a stored case.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                $ref: "#/components/schemas/CaseEvidenceImportRequest"
+              }
+            }
+          }
+        },
+        responses: {
+          "200": {
+            description: "Imported evidence records, custody entries, and updated case."
+          },
+          "404": {
+            description: "Case or evidence was not found."
+          }
+        }
+      }
+    },
+    "/docs/openapi.json": {
+      get: {
+        tags: ["docs"],
+        operationId: "getOpenApiDocument",
+        summary: "Return the OpenAPI document as JSON.",
+        responses: {
+          "200": {
+            description: "OpenAPI 3.1 document for the supported MVP endpoints."
+          }
+        }
+      }
+    }
+  },
+  components: {
+    schemas: {
+      AnalyzeRequest: {
+        type: "object",
+        required: ["mode"],
+        properties: {
+          mode: {
+            type: "string",
+            enum: ["alert", "logs", "iocs", "hardening"]
+          },
+          title: {
+            type: "string"
+          },
+          text: {
+            type: "string",
+            description: "Raw defensive evidence or operator request."
+          },
+          json: {
+            type: "object",
+            additionalProperties: true
+          },
+          useKnowledge: {
+            type: "boolean",
+            default: true
+          },
+          knowledgeFilters: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              sourceIds: {
+                type: "array",
+                items: { type: "string" }
+              },
+              trustTiers: {
+                type: "array",
+                items: {
+                  type: "string",
+                  enum: ["internal", "standard", "vendor", "community"]
+                }
+              },
+              tenantId: {
+                type: "string"
+              },
+              approvalStates: {
+                type: "array",
+                items: {
+                  type: "string",
+                  enum: ["draft", "approved", "rejected", "retired", "quarantined"]
+                }
+              }
+            }
+          }
+        },
+        additionalProperties: false
+      },
+      SafetyEvaluateRequest: {
+        type: "object",
+        required: ["mode", "text"],
+        properties: {
+          mode: {
+            type: "string",
+            enum: ["alert", "logs", "iocs", "hardening"]
+          },
+          text: {
+            type: "string"
+          },
+          outputText: {
+            type: "string",
+            description: "Optional model output to validate before returning to an analyst."
+          }
+        },
+        additionalProperties: false
+      },
+      EvidenceSourceRegistration: {
+        type: "object",
+        required: ["name", "type", "owner"],
+        properties: {
+          name: {
+            type: "string"
+          },
+          type: {
+            type: "string",
+            enum: ["dns", "proxy", "email_security", "siem", "edr", "identity", "cloud", "artifact"]
+          },
+          owner: {
+            type: "string"
+          },
+          parserId: {
+            type: "string"
+          },
+          connectorId: {
+            type: "string"
+          },
+          reliabilityScore: {
+            type: "number",
+            minimum: 0,
+            maximum: 1
+          },
+          retentionClass: {
+            type: "string",
+            enum: ["ephemeral", "standard", "legal_hold"],
+            default: "standard"
+          },
+          dataClass: {
+            type: "string",
+            enum: ["public", "internal", "confidential", "restricted"],
+            default: "internal"
+          },
+          enabled: {
+            type: "boolean",
+            default: true
+          }
+        },
+        additionalProperties: false
+      },
+      IngestionJobRequest: {
+        type: "object",
+        required: ["sourceId"],
+        properties: {
+          sourceId: {
+            type: "string"
+          },
+          actor: {
+            type: "string",
+            default: "analyst"
+          },
+          text: {
+            type: "string"
+          },
+          json: {
+            description: "JSON evidence payload."
+          }
+        },
+        additionalProperties: false
+      },
+      CaseEvidenceImportRequest: {
+        type: "object",
+        required: ["evidenceIds"],
+        properties: {
+          evidenceIds: {
+            type: "array",
+            items: {
+              type: "string"
+            }
+          },
+          actor: {
+            type: "string",
+            default: "analyst"
+          },
+          note: {
+            type: "string"
+          }
+        },
+        additionalProperties: false
+      },
+      DetectionRuleValidationRequest: {
+        type: "object",
+        properties: {
+          format: {
+            type: "string",
+            enum: ["sigma-like-json", "sigma", "kql", "spl", "yara", "eql", "lucene", "suricata", "snort"]
+          }
+        },
+        additionalProperties: false
+      },
+      DetectionDeploymentRequest: {
+        type: "object",
+        required: ["backend"],
+        properties: {
+          backend: {
+            type: "string"
+          },
+          version: {
+            type: "string",
+            default: "1.0.0"
+          },
+          status: {
+            type: "string",
+            enum: ["planned", "deployed", "failed", "drifted", "retired"],
+            default: "planned"
+          },
+          owner: {
+            type: "string",
+            default: "detection-engineering"
+          },
+          driftStatus: {
+            type: "string",
+            enum: ["not_checked", "in_sync", "drifted"],
+            default: "not_checked"
+          },
+          notes: {
+            type: "string"
+          }
+        },
+        additionalProperties: false
+      }
+    }
+  }
+} as const;

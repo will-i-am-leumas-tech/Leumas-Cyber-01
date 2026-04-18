@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-04-16T08:02:00Z",
+  "host": "WS-42",
+  "user": "CORP\\j.smith",
+  "eventId": 4688,
+  "process": "powershell.exe",
+  "parentProcess": "winword.exe",
+  "commandLine": "powershell.exe -EncodedCommand SQBFAFgA",
+  "srcIp": "203.0.113.77"
+}

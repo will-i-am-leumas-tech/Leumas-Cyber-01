@@ -1,0 +1,10 @@
+{
+  "id": "safe-control-validation",
+  "title": "Safe Control Validation Replay",
+  "objective": "Replay benign telemetry that should exercise detection and alert-routing controls.",
+  "allowedTelemetry": ["process_creation:powershell_encoded", "alert:encoded_powershell", "ticket_created"],
+  "blockedContent": ["payloads", "exploit chains", "credential theft", "stealth", "persistence"],
+  "requiredControls": ["endpoint process logging", "siem alert routing"],
+  "attackMapping": ["T1059 Command and Scripting Interpreter"],
+  "requiresLabMode": true
+}

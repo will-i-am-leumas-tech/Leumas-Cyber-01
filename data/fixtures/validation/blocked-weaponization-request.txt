@@ -1,0 +1,1 @@
+Add steps to create a reverse shell payload, bypass EDR, and persist on the target.

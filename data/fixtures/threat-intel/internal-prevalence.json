@@ -1,0 +1,9 @@
+{
+  "indicatorId": "indicator--22222222-2222-4222-8222-222222222222",
+  "indicatorValue": "suspicious.example.com",
+  "telemetrySource": "dns",
+  "count": 4,
+  "lastSeen": "2026-04-17T13:00:00.000Z",
+  "caseRefs": ["case_example_001"],
+  "prevalenceScore": 0.8
+}

@@ -1,0 +1,155 @@
+[
+  {
+    "id": "audit_86952df5-4b65-40de-93fe-663f9ac46d0d",
+    "timestamp": "2026-04-17T22:38:18.657Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "analysis.received",
+    "summary": "Received logs input for defensive analysis.",
+    "allowed": true,
+    "metadata": {
+      "mode": "logs",
+      "inputType": "inline-text",
+      "provider": "local-mock",
+      "auditEventId": "audit_event_1433041a-a32b-4b25-bc76-3513612f3e36",
+      "auditHash": "52343741299f72b824e05cc9b4c943b6945329fa7e25e520fa01fa32446aed57",
+      "auditSequence": 8
+    }
+  },
+  {
+    "id": "audit_3ccca0e7-90a4-4aaa-8c4d-2722d92ba4a3",
+    "timestamp": "2026-04-17T22:38:18.711Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "privacy.sensitive_data_detected",
+    "summary": "Detected 3 sensitive values and prepared provider redaction.",
+    "allowed": true,
+    "metadata": {
+      "findingTypes": {
+        "username": 3
+      },
+      "dataClass": "confidential",
+      "sourceRef": "inline-text",
+      "auditEventId": "audit_event_88e1b7e7-5a8a-4bba-b69c-59770a754eea",
+      "auditHash": "6edfd967b55c19178dd36f59dd22be51880b657f939b0b456baa218859441b83",
+      "auditSequence": 9
+    }
+  },
+  {
+    "id": "audit_98af73dd-1ae7-484a-af66-c2c8decfee44",
+    "timestamp": "2026-04-17T22:38:18.749Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "guardrail.allowed",
+    "summary": "Request passed safety policy as defensive.",
+    "allowed": true,
+    "metadata": {
+      "safetyDecisionId": "safety_decision_36831fde-acc2-4a18-a8be-427913a0acd1",
+      "category": "defensive",
+      "reason": "allowed_defensive",
+      "matchedSignals": [],
+      "policyVersion": "safety-policy-2026-04-16.1",
+      "auditEventId": "audit_event_0dfe8de6-4447-4292-a762-a533a6fa295a",
+      "auditHash": "7708a975151d9d3ba1129a3ecab0f42e3d93efa026bf4eac4f52a5005b15f571",
+      "auditSequence": 10
+    }
+  },
+  {
+    "id": "audit_76a3d666-2a7a-4751-900f-2b1939542f97",
+    "timestamp": "2026-04-17T22:38:18.799Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "ingest.normalized",
+    "summary": "Normalized 3 events from 1 artifact.",
+    "allowed": true,
+    "metadata": {
+      "artifactCount": 1,
+      "eventCount": 3,
+      "entityCount": 2,
+      "parserWarningCount": 0,
+      "auditEventId": "audit_event_79123e05-2773-4c2c-90ad-e4bc975bc6a6",
+      "auditHash": "fa82704db4972c1faac6b1e240b6aadcff2d02f678febfe2995508f48ceac9ec",
+      "auditSequence": 11
+    }
+  },
+  {
+    "id": "audit_97222443-d0b0-479a-8078-163d376162c7",
+    "timestamp": "2026-04-17T22:38:18.841Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "provider.completed",
+    "summary": "Provider local-mock completed defensive review.",
+    "allowed": true,
+    "metadata": {
+      "provider": "local-mock",
+      "providerCallId": "provider_call_7085b173-55bd-4adc-b4bf-1dc75ccd6870",
+      "structured": {
+        "provider": "local-mock",
+        "mode": "logs",
+        "deterministic": true
+      },
+      "structuredOutputValidation": {
+        "id": "structured_validation_ba0071e0-e4e7-456e-a37a-64e4e25db9b2",
+        "providerCallId": "provider_call_7085b173-55bd-4adc-b4bf-1dc75ccd6870",
+        "schemaName": "defensive-analysis-provider",
+        "status": "passed",
+        "reason": "Structured output included provider and mode fields.",
+        "createdAt": "2026-04-17T22:38:18.823Z"
+      },
+      "promptVersion": "defensive-analysis-v1",
+      "outputSafety": {
+        "outputSafetyId": "output_safety_6df35955-00a1-4512-ae8c-143b6bca84cf",
+        "allowed": true,
+        "blockedSegments": [],
+        "policyVersion": "safety-policy-2026-04-16.1"
+      },
+      "auditEventId": "audit_event_4315baff-4205-497b-ab09-bb713e566410",
+      "auditHash": "bc11d771b6ad621df127a5b3e481756f866a85ef4375d45550996d5a3874fc0b",
+      "auditSequence": 12
+    }
+  },
+  {
+    "id": "audit_448c9dc7-2a11-4b49-9a6f-5f047fb4e22c",
+    "timestamp": "2026-04-17T22:38:18.892Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "threat_intel.enriched",
+    "summary": "Enriched 1 indicator with local threat intelligence.",
+    "allowed": true,
+    "metadata": {
+      "enrichmentCount": 0,
+      "summaryCount": 0,
+      "auditEventId": "audit_event_2879d284-79a6-4db5-b2bd-7aff3163df51",
+      "auditHash": "685d6aef5b710c32c79321b574c3e7cc2eb36b37ca5c99f0cf5de1a3778b2596",
+      "auditSequence": 13
+    }
+  },
+  {
+    "id": "audit_1d7ca577-8116-4c5b-bb36-908fbbfd33f6",
+    "timestamp": "2026-04-17T22:38:18.925Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "reasoning.validated",
+    "summary": "Validated 7 observations, 1 hypotheses, and 1 findings.",
+    "allowed": true,
+    "metadata": {
+      "observations": 7,
+      "hypotheses": 1,
+      "findings": 1,
+      "promptVersion": "defensive-analysis-v1",
+      "auditEventId": "audit_event_c9a807b2-7cbb-4b17-a662-e9cb04668674",
+      "auditHash": "28b070ed6e1762c14674aee98d497861a34191b1d730df28fd74559e0288fc9d",
+      "auditSequence": 14
+    }
+  },
+  {
+    "id": "audit_e5fbf4c0-e93f-4fd1-a96d-efbf70f47ab8",
+    "timestamp": "2026-04-17T22:38:18.959Z",
+    "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+    "action": "analysis.completed",
+    "summary": "Completed general-monitoring analysis with low severity.",
+    "allowed": true,
+    "metadata": {
+      "severity": "low",
+      "confidence": 0.6,
+      "indicatorCount": 1,
+      "timelineCount": 3,
+      "auditEventId": "audit_event_b512051f-0c43-4221-aa2e-b1fc66a4c7c2",
+      "auditHash": "9ded749a767060268724cf7bfb42f87f8717b66109f408f7cd901697626ba59d",
+      "auditSequence": 15
+    }
+  }
+]

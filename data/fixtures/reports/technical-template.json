@@ -1,0 +1,15 @@
+{
+  "id": "technical-template",
+  "name": "Technical Incident Report",
+  "audience": "technical",
+  "requiredSections": [
+    "overview",
+    "severity",
+    "findings",
+    "evidence-reasoning",
+    "timeline",
+    "indicators",
+    "recommended-actions",
+    "notes"
+  ]
+}

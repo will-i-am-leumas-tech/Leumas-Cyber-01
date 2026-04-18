@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "id": "local-reputation",
+      "name": "Local Reputation",
+      "type": "local",
+      "trustTier": "internal",
+      "reliability": 0.9,
+      "terms": "Internal defensive use only.",
+      "enabled": true
+    },
+    {
+      "id": "community-feed",
+      "name": "Community Feed",
+      "type": "external",
+      "trustTier": "community",
+      "reliability": 0.55,
+      "terms": "Use for triage only; verify before enforcement.",
+      "enabled": true
+    },
+    {
+      "id": "internal-sightings",
+      "name": "Internal Sightings",
+      "type": "internal",
+      "trustTier": "internal",
+      "reliability": 0.85,
+      "terms": "Internal telemetry correlation.",
+      "enabled": true
+    }
+  ],
+  "reputation": [
+    {
+      "type": "domain",
+      "value": "suspicious.example.com",
+      "sourceId": "local-reputation",
+      "verdict": "malicious",
+      "confidence": 0.92,
+      "tags": ["phishing-infrastructure", "dns-watchlist"],
+      "firstSeen": "2026-04-10T00:00:00.000Z",
+      "lastSeen": "2026-04-16T00:00:00.000Z"
+    },
+    {
+      "type": "domain",
+      "value": "suspicious.example.com",
+      "sourceId": "community-feed",
+      "verdict": "suspicious",
+      "confidence": 0.8,
+      "tags": ["community-report"],
+      "firstSeen": "2026-04-11T00:00:00.000Z",
+      "lastSeen": "2026-04-15T00:00:00.000Z"
+    },
+    {
+      "type": "ipv4",
+      "value": "203.0.113.66",
+      "sourceId": "local-reputation",
+      "verdict": "suspicious",
+      "confidence": 0.74,
+      "tags": ["scanner-observed"],
+      "firstSeen": "2026-04-12T00:00:00.000Z",
+      "lastSeen": "2026-04-16T00:00:00.000Z"
+    }
+  ]
+}

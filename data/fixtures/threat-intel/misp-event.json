@@ -1,0 +1,39 @@
+{
+  "Event": {
+    "uuid": "55555555-5555-4555-8555-555555555555",
+    "info": "Defensive partner IOC report",
+    "date": "2026-04-17",
+    "threat_level_id": "2",
+    "Attribute": [
+      {
+        "uuid": "66666666-6666-4666-8666-666666666666",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "203.0.113.66",
+        "comment": "Observed in blocked outbound proxy telemetry.",
+        "Tag": [{ "name": "tlp:amber" }, { "name": "network-indicator" }]
+      },
+      {
+        "uuid": "77777777-7777-4777-8777-777777777777",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "comment": "Hash from quarantined attachment metadata.",
+        "Tag": [{ "name": "quarantine-review" }]
+      }
+    ],
+    "Object": [
+      {
+        "uuid": "88888888-8888-4888-8888-888888888888",
+        "name": "network-connection",
+        "Attribute": [
+          {
+            "uuid": "66666666-6666-4666-8666-666666666666",
+            "type": "ip-dst",
+            "value": "203.0.113.66"
+          }
+        ]
+      }
+    ]
+  }
+}

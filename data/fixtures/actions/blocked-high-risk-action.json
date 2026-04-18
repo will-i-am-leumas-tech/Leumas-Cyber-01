@@ -1,0 +1,18 @@
+{
+  "objective": "Attempt unsupported host isolation",
+  "risk": "critical",
+  "targetEntityIds": ["entity_host_ws-42"],
+  "expectedOutcome": "This should be blocked until a future approved connector exists.",
+  "createdBy": "analyst@example.test",
+  "steps": [
+    {
+      "title": "Isolate host",
+      "connectorId": "edr",
+      "operation": "isolate_host",
+      "parameters": {
+        "host": "WS-42"
+      },
+      "risk": "critical"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "viewer": [
+    "case:read"
+  ],
+  "analyst": [
+    "case:create",
+    "case:read",
+    "case:write"
+  ],
+  "lead": [
+    "case:manage",
+    "action:approve"
+  ],
+  "responder": [
+    "tool:execute",
+    "action:execute"
+  ],
+  "admin": [
+    "case:manage",
+    "tool:execute",
+    "action:execute",
+    "audit:read",
+    "system:read"
+  ],
+  "auditor": [
+    "case:read",
+    "audit:read",
+    "system:read"
+  ]
+}

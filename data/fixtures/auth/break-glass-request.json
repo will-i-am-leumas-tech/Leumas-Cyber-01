@@ -1,0 +1,6 @@
+{
+  "userId": "user_partner",
+  "tenantId": "tenant_default",
+  "reason": "Emergency review of a default-tenant case during an active incident handoff.",
+  "expiresAt": "2026-04-19T00:00:00.000Z"
+}

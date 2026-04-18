@@ -1,0 +1,987 @@
+{
+  "id": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+  "title": "Log Review",
+  "createdAt": "2026-04-17T22:38:18.977Z",
+  "updatedAt": "2026-04-17T22:38:18.977Z",
+  "inputType": "pasted-text",
+  "mode": "logs",
+  "rawInputRef": "inline-text",
+  "normalizedArtifacts": [
+    {
+      "id": "entity_ip_203.0.113.10",
+      "type": "ip",
+      "value": "203.0.113.10",
+      "normalized": "203.0.113.10",
+      "aliases": []
+    },
+    {
+      "id": "entity_user_admin",
+      "type": "user",
+      "value": "admin",
+      "normalized": "admin",
+      "aliases": []
+    }
+  ],
+  "severity": "low",
+  "state": "new",
+  "priority": "low",
+  "tags": [
+    "general-monitoring",
+    "logs"
+  ],
+  "tasks": [
+    {
+      "id": "task_001",
+      "title": "Preserve submitted evidence",
+      "description": "Keep the original alert, logs, normalized events, and report attached to the case.",
+      "priority": "low",
+      "status": "open",
+      "linkedFindingIds": [
+        "finding_001"
+      ],
+      "required": true,
+      "createdAt": "2026-04-17T22:38:18.977Z",
+      "updatedAt": "2026-04-17T22:38:18.977Z"
+    },
+    {
+      "id": "task_002",
+      "title": "Correlate related telemetry",
+      "description": "Review endpoint, identity, network, DNS, proxy, and cloud telemetry for the same time window.",
+      "priority": "low",
+      "status": "open",
+      "linkedFindingIds": [
+        "finding_001"
+      ],
+      "required": true,
+      "createdAt": "2026-04-17T22:38:18.977Z",
+      "updatedAt": "2026-04-17T22:38:18.977Z"
+    }
+  ],
+  "decisions": [],
+  "workflowTransitions": [
+    {
+      "id": "transition_001",
+      "from": "new",
+      "to": "new",
+      "actor": "system",
+      "reason": "Case created from analysis.",
+      "timestamp": "2026-04-17T22:38:18.977Z"
+    }
+  ],
+  "toolCalls": [],
+  "toolResults": [],
+  "actionPlans": [],
+  "approvalRequests": [],
+  "actionExecutions": [],
+  "detectionIntents": [],
+  "detectionRules": [],
+  "ruleTestCases": [],
+  "ruleValidationResults": [],
+  "reportTemplates": [
+    {
+      "id": "executive-template",
+      "name": "Executive Incident Brief",
+      "audience": "executive",
+      "requiredSections": [
+        "overview",
+        "severity",
+        "key-findings",
+        "recommended-actions",
+        "limitations"
+      ],
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "required": true,
+          "guidance": "Summarize what happened, current risk, and operational impact."
+        },
+        {
+          "id": "severity",
+          "title": "Severity",
+          "required": true,
+          "guidance": "State severity and confidence in business-friendly terms."
+        },
+        {
+          "id": "key-findings",
+          "title": "Key Findings",
+          "required": true,
+          "guidance": "List the most important claims with evidence citations."
+        },
+        {
+          "id": "recommended-actions",
+          "title": "Recommended Actions",
+          "required": true,
+          "guidance": "List defensive next steps requiring owner review."
+        },
+        {
+          "id": "limitations",
+          "title": "Limitations",
+          "required": true,
+          "guidance": "Call out assumptions, unknowns, and review needs."
+        }
+      ],
+      "fieldRules": [
+        {
+          "sectionId": "overview",
+          "required": true,
+          "maxLength": 1200,
+          "redactForAudiences": [
+            "external"
+          ]
+        },
+        {
+          "sectionId": "key-findings",
+          "required": true,
+          "redactForAudiences": [
+            "external"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technical-template",
+      "name": "Technical Incident Report",
+      "audience": "technical",
+      "requiredSections": [
+        "overview",
+        "severity",
+        "findings",
+        "evidence-reasoning",
+        "timeline",
+        "indicators",
+        "recommended-actions",
+        "notes"
+      ],
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "required": true,
+          "guidance": "Explain the case summary and technical scope."
+        },
+        {
+          "id": "severity",
+          "title": "Severity",
+          "required": true,
+          "guidance": "State severity, confidence, and category."
+        },
+        {
+          "id": "findings",
+          "title": "Findings",
+          "required": true,
+          "guidance": "List findings and evidence references."
+        },
+        {
+          "id": "evidence-reasoning",
+          "title": "Evidence Reasoning",
+          "required": true,
+          "guidance": "Show source-linked observations, hypotheses, assumptions, and unknowns."
+        },
+        {
+          "id": "knowledge-sources",
+          "title": "Knowledge Sources",
+          "required": false,
+          "guidance": "Cite retrieved standards, internal sources, or vendor guidance."
+        },
+        {
+          "id": "normalized-events",
+          "title": "Normalized Events",
+          "required": false,
+          "guidance": "Summarize parser output and telemetry coverage."
+        },
+        {
+          "id": "timeline",
+          "title": "Timeline",
+          "required": true,
+          "guidance": "List timestamped events extracted from evidence."
+        },
+        {
+          "id": "indicators",
+          "title": "Indicators",
+          "required": true,
+          "guidance": "List normalized defensive indicators."
+        },
+        {
+          "id": "recommended-actions",
+          "title": "Recommended Actions",
+          "required": true,
+          "guidance": "Provide defensive response and investigation actions."
+        },
+        {
+          "id": "notes",
+          "title": "Notes",
+          "required": true,
+          "guidance": "Capture review notes and residual uncertainty."
+        }
+      ],
+      "fieldRules": [
+        {
+          "sectionId": "findings",
+          "required": true,
+          "redactForAudiences": [
+            "external"
+          ]
+        },
+        {
+          "sectionId": "indicators",
+          "required": true,
+          "redactForAudiences": [
+            "external"
+          ]
+        }
+      ]
+    }
+  ],
+  "reportDrafts": [],
+  "reportVersions": [],
+  "reportCitations": [],
+  "redactionResults": [],
+  "safetyDecisions": [
+    {
+      "id": "safety_decision_36831fde-acc2-4a18-a8be-427913a0acd1",
+      "layer": "input",
+      "allowed": true,
+      "category": "defensive",
+      "reason": "allowed_defensive",
+      "matchedSignals": [],
+      "policyVersion": "safety-policy-2026-04-16.1",
+      "createdAt": "2026-04-17T22:38:18.731Z"
+    }
+  ],
+  "policyVersions": [
+    {
+      "version": "safety-policy-2026-04-16.1",
+      "active": true,
+      "description": "Layered defensive cyber safety policy with input, prompt-injection, output, and tool enforcement hooks.",
+      "createdAt": "2026-04-16T00:00:00.000Z"
+    }
+  ],
+  "promptInjectionFindings": [],
+  "outputSafetyResults": [
+    {
+      "id": "output_safety_6df35955-00a1-4512-ae8c-143b6bca84cf",
+      "allowed": true,
+      "blockedSegments": [],
+      "policyVersion": "safety-policy-2026-04-16.1",
+      "createdAt": "2026-04-17T22:38:18.823Z"
+    }
+  ],
+  "authorizationScopes": [],
+  "validationCampaigns": [],
+  "validationObjectives": [],
+  "telemetryExpectations": [],
+  "validationResults": [],
+  "vulnerabilityFindings": [],
+  "vulnerabilityContexts": [],
+  "assetRiskProfiles": [],
+  "vulnerabilityRemediationTasks": [],
+  "riskExceptions": [],
+  "cloudAccounts": [],
+  "identityPrincipals": [],
+  "cloudEvents": [],
+  "postureFindings": [],
+  "permissionRisks": [],
+  "endpointEvents": [],
+  "processTrees": [],
+  "forensicArtifacts": [],
+  "forensicTimeline": [],
+  "sampleAnalysisSummaries": [],
+  "threatIntelSources": [
+    {
+      "id": "local-reputation",
+      "name": "Local Reputation",
+      "type": "local",
+      "trustTier": "internal",
+      "reliability": 0.9,
+      "terms": "Internal defensive use only.",
+      "enabled": true
+    },
+    {
+      "id": "community-feed",
+      "name": "Community Feed",
+      "type": "external",
+      "trustTier": "community",
+      "reliability": 0.55,
+      "terms": "Use for triage only; verify before enforcement.",
+      "enabled": true
+    },
+    {
+      "id": "internal-sightings",
+      "name": "Internal Sightings",
+      "type": "internal",
+      "trustTier": "internal",
+      "reliability": 0.85,
+      "terms": "Internal telemetry correlation.",
+      "enabled": true
+    }
+  ],
+  "indicatorEnrichments": [],
+  "internalSightings": [],
+  "indicatorLifecycle": [],
+  "threatContextSummaries": [],
+  "agentRoles": [
+    {
+      "id": "parser",
+      "displayName": "Parser Agent",
+      "description": "Summarizes normalized artifacts, events, entities, and parser warnings.",
+      "allowedTools": [],
+      "maxTimeoutMs": 1500
+    },
+    {
+      "id": "investigator",
+      "displayName": "Investigator Agent",
+      "description": "Reviews structured findings and case severity without tool execution.",
+      "allowedTools": [],
+      "maxTimeoutMs": 2000
+    },
+    {
+      "id": "retriever",
+      "displayName": "Retriever Agent",
+      "description": "Summarizes already-retrieved knowledge context and citations.",
+      "allowedTools": [
+        "knowledge.search"
+      ],
+      "maxTimeoutMs": 2000
+    },
+    {
+      "id": "reporter",
+      "displayName": "Reporter Agent",
+      "description": "Checks report structure and export readiness.",
+      "allowedTools": [],
+      "maxTimeoutMs": 1500
+    },
+    {
+      "id": "safetyReviewer",
+      "displayName": "Safety Reviewer Agent",
+      "description": "Validates final agent-visible output for unsafe cyber content.",
+      "allowedTools": [],
+      "maxTimeoutMs": 1500
+    },
+    {
+      "id": "toolExecutor",
+      "displayName": "Tool Executor Agent",
+      "description": "Summarizes tool activity under a strict connector permission boundary.",
+      "allowedTools": [
+        "mock-siem.search_events"
+      ],
+      "maxTimeoutMs": 2000
+    }
+  ],
+  "agentTasks": [],
+  "agentResults": [],
+  "orchestrationRuns": [],
+  "arbitrationResults": [],
+  "sensitiveFindings": [
+    {
+      "id": "sensitive_finding_50f79a93-76f6-468f-b6d8-37c2af69c0d1",
+      "type": "username",
+      "sourceRef": "inline-text",
+      "start": 34,
+      "end": 44,
+      "confidence": 0.72,
+      "redactionValue": "[REDACTED_USERNAME_001]",
+      "fingerprintHash": "09b9ba424f54511d",
+      "length": 10,
+      "createdAt": "2026-04-17T22:38:18.693Z"
+    },
+    {
+      "id": "sensitive_finding_206d0879-7807-409d-b262-b6a62996538b",
+      "type": "username",
+      "sourceRef": "inline-text",
+      "start": 96,
+      "end": 106,
+      "confidence": 0.72,
+      "redactionValue": "[REDACTED_USERNAME_002]",
+      "fingerprintHash": "09b9ba424f54511d",
+      "length": 10,
+      "createdAt": "2026-04-17T22:38:18.693Z"
+    },
+    {
+      "id": "sensitive_finding_9b977e33-e411-4964-8b39-e80a0a2abe12",
+      "type": "username",
+      "sourceRef": "inline-text",
+      "start": 162,
+      "end": 172,
+      "confidence": 0.72,
+      "redactionValue": "[REDACTED_USERNAME_003]",
+      "fingerprintHash": "09b9ba424f54511d",
+      "length": 10,
+      "createdAt": "2026-04-17T22:38:18.693Z"
+    }
+  ],
+  "redactedArtifacts": [
+    {
+      "id": "redacted_artifact_dde0c9e0-d142-45f1-a787-16af8ccbfed9",
+      "originalRef": "inline-text",
+      "redactedRef": "inline-text:redacted",
+      "redactedText": "2026-04-16T10:00:00Z failed login [REDACTED_USERNAME_001] src=203.0.113.10\n2026-04-16T10:01:00Z failed login [REDACTED_USERNAME_002] src=203.0.113.10\n2026-04-16T10:02:00Z successful login [REDACTED_USERNAME_003] src=203.0.113.10",
+      "findingIds": [
+        "sensitive_finding_50f79a93-76f6-468f-b6d8-37c2af69c0d1",
+        "sensitive_finding_206d0879-7807-409d-b262-b6a62996538b",
+        "sensitive_finding_9b977e33-e411-4964-8b39-e80a0a2abe12"
+      ],
+      "redactionPolicyVersion": "privacy-redaction-2026-04-17.1",
+      "createdAt": "2026-04-17T22:38:18.694Z"
+    }
+  ],
+  "promptPackages": [
+    {
+      "id": "prompt_package_bcc41178-34e8-4c11-aae9-a756dfc0d45c",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "mode": "redact",
+      "provider": "local-mock",
+      "minimizedFields": [
+        "input.text",
+        "input.files.text",
+        "input.json"
+      ],
+      "excludedFindingIds": [
+        "sensitive_finding_50f79a93-76f6-468f-b6d8-37c2af69c0d1",
+        "sensitive_finding_206d0879-7807-409d-b262-b6a62996538b",
+        "sensitive_finding_9b977e33-e411-4964-8b39-e80a0a2abe12"
+      ],
+      "redactionSummary": {
+        "username": 3
+      },
+      "promptHash": "c5a7b21ef6427c4bdfd9b336bf7d8de58dd45f8545005454051605be5e031e65",
+      "rawInputHash": "e6ecde7e8bc2d354a56d1ad2c7206892c896fffa13fdfa865ca5cc779609bf49",
+      "createdAt": "2026-04-17T22:38:18.822Z"
+    }
+  ],
+  "dataClassifications": [
+    {
+      "id": "data_classification_4d6db9f2-f31b-451c-9afa-01f877409d51",
+      "resourceRef": "inline-text",
+      "dataClass": "confidential",
+      "reason": "Detected sensitive data types: username.",
+      "createdAt": "2026-04-17T22:38:18.694Z"
+    }
+  ],
+  "privacyAuditEvents": [
+    {
+      "id": "privacy_audit_fa31f1b2-cd5b-43ba-bcbf-ffe06ab279e8",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "action": "privacy.sensitive_data_detected",
+      "dataClass": "confidential",
+      "findingCount": 3,
+      "summary": "Detected and prepared redaction for 3 sensitive values.",
+      "timestamp": "2026-04-17T22:38:18.694Z"
+    }
+  ],
+  "providerCalls": [
+    {
+      "id": "provider_call_7085b173-55bd-4adc-b4bf-1dc75ccd6870",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "provider": "local-mock",
+      "model": "local-mock-deterministic",
+      "promptVersion": "defensive-analysis-v1",
+      "taskType": "logs",
+      "status": "completed",
+      "latencyMs": 0,
+      "tokens": {
+        "promptTokens": 229,
+        "completionTokens": 27,
+        "totalTokens": 256
+      },
+      "startedAt": "2026-04-17T22:38:18.822Z",
+      "completedAt": "2026-04-17T22:38:18.822Z"
+    }
+  ],
+  "structuredOutputValidations": [
+    {
+      "id": "structured_validation_ba0071e0-e4e7-456e-a37a-64e4e25db9b2",
+      "providerCallId": "provider_call_7085b173-55bd-4adc-b4bf-1dc75ccd6870",
+      "schemaName": "defensive-analysis-provider",
+      "status": "passed",
+      "reason": "Structured output included provider and mode fields.",
+      "createdAt": "2026-04-17T22:38:18.823Z"
+    }
+  ],
+  "usageRecords": [
+    {
+      "id": "usage_58d79ced-fdaa-4bcd-bc25-db0b0c12487d",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "provider": "local-mock",
+      "model": "local-mock-deterministic",
+      "promptVersion": "defensive-analysis-v1",
+      "taskType": "logs",
+      "status": "completed",
+      "totalTokens": 256,
+      "latencyMs": 0,
+      "createdAt": "2026-04-17T22:38:18.822Z"
+    }
+  ],
+  "summary": "The submitted security data was reviewed with deterministic defensive heuristics.",
+  "recommendations": [
+    "Validate the source and timestamp of the submitted data.",
+    "Correlate the event with endpoint, identity, DNS, proxy, and firewall telemetry.",
+    "Document analyst assumptions and preserve the original evidence."
+  ],
+  "reportMarkdown": "# Log Review\n\n## Overview\nThe submitted security data was reviewed with deterministic defensive heuristics.\n\n## Severity\n**LOW** with 60% confidence.\n\n## Findings\n- No high-confidence suspicious pattern was identified by the MVP heuristics.\n\n## Evidence Reasoning\n### Findings\n- **Log Review**: The submitted evidence did not match a strong suspicious pattern, so the case should be reviewed with more telemetry before firm conclusions are made. (60% confidence; evidence: observation_002, observation_003, observation_004)\n\n### Source-Linked Facts\n- failed login user=admin src=203.0.113.10 (90% confidence, timeline[0])\n- failed login user=admin src=203.0.113.10 (90% confidence, timeline[1])\n- successful login user=admin src=203.0.113.10 (90% confidence, timeline[2])\n\n### Hypotheses\n- **No high-confidence malicious pattern identified** [needs_review]: The submitted evidence did not match a strong suspicious pattern, so the case should be reviewed with more telemetry before firm conclusions are made.\n\n## Assumptions And Unknowns\n\n### Assumptions\n- Submitted telemetry accurately represents the relevant time window.\n- Parsed fields and timestamps were not intentionally altered before submission.\n\n### Unknowns\n- Whether the observed activity was authorized by the system owner.\n- Whether related activity exists elsewhere in the environment.\n\n## Knowledge Sources\nNo knowledge sources were cited.\n\n## Normalized Events\nArtifacts: 1. Events: 3. Entities: 2.\n\n## Timeline\n| Time | Event |\n| --- | --- |\n| 2026-04-16T10:00:00.000Z | failed login user=admin src=203.0.113.10 |\n| 2026-04-16T10:01:00.000Z | failed login user=admin src=203.0.113.10 |\n| 2026-04-16T10:02:00.000Z | successful login user=admin src=203.0.113.10 |\n\n## Indicators\n| Type | Indicator |\n| --- | --- |\n| ipv4 | `203.0.113.10` |\n\n## Recommended Actions\n- Validate the source and timestamp of the submitted data.\n- Correlate the event with endpoint, identity, DNS, proxy, and firewall telemetry.\n- Document analyst assumptions and preserve the original evidence.\n\n## Notes\n- This MVP result is heuristic and should be validated with source telemetry.\n- Model provider local-mock completed: Mock provider completed defensive logs review.",
+  "result": {
+    "title": "Log Review",
+    "severity": "low",
+    "confidence": 0.6,
+    "category": "general-monitoring",
+    "summary": "The submitted security data was reviewed with deterministic defensive heuristics.",
+    "evidence": [
+      "No high-confidence suspicious pattern was identified by the MVP heuristics."
+    ],
+    "recommendedActions": [
+      "Validate the source and timestamp of the submitted data.",
+      "Correlate the event with endpoint, identity, DNS, proxy, and firewall telemetry.",
+      "Document analyst assumptions and preserve the original evidence."
+    ],
+    "indicators": [
+      {
+        "type": "ipv4",
+        "value": "203.0.113.10",
+        "normalized": "203.0.113.10",
+        "source": "ip"
+      }
+    ],
+    "timeline": [
+      {
+        "timestamp": "2026-04-16T10:00:00.000Z",
+        "label": "failed login user=admin src=203.0.113.10",
+        "raw": "2026-04-16T10:00:00Z failed login user=admin src=203.0.113.10"
+      },
+      {
+        "timestamp": "2026-04-16T10:01:00.000Z",
+        "label": "failed login user=admin src=203.0.113.10",
+        "raw": "2026-04-16T10:01:00Z failed login user=admin src=203.0.113.10"
+      },
+      {
+        "timestamp": "2026-04-16T10:02:00.000Z",
+        "label": "successful login user=admin src=203.0.113.10",
+        "raw": "2026-04-16T10:02:00Z successful login user=admin src=203.0.113.10"
+      }
+    ],
+    "ingestion": {
+      "artifacts": [
+        {
+          "id": "artifact_e6ecde7e8bc2d354",
+          "filename": "inline-text.txt",
+          "mediaType": "text/plain",
+          "hash": "e6ecde7e8bc2d354a56d1ad2c7206892c896fffa13fdfa865ca5cc779609bf49",
+          "sizeBytes": 189,
+          "storageRef": "inline:text",
+          "source": "inline",
+          "createdAt": "2026-04-17T22:38:18.767Z"
+        }
+      ],
+      "normalizedEvents": [
+        {
+          "id": "event_e6ecde7e8bc2_001",
+          "timestamp": "2026-04-16T10:00:00.000Z",
+          "source": "inline-text.txt",
+          "eventType": "auth_failure",
+          "severity": "medium",
+          "actor": "admin",
+          "network": {
+            "srcIp": "203.0.113.10"
+          },
+          "process": {},
+          "entityIds": [
+            "entity_user_admin",
+            "entity_ip_203.0.113.10"
+          ],
+          "rawRef": {
+            "artifactId": "artifact_e6ecde7e8bc2d354",
+            "parserId": "line-log",
+            "lineNumber": 1,
+            "excerpt": "2026-04-16T10:00:00Z failed login user=admin src=203.0.113.10"
+          }
+        },
+        {
+          "id": "event_e6ecde7e8bc2_002",
+          "timestamp": "2026-04-16T10:01:00.000Z",
+          "source": "inline-text.txt",
+          "eventType": "auth_failure",
+          "severity": "medium",
+          "actor": "admin",
+          "network": {
+            "srcIp": "203.0.113.10"
+          },
+          "process": {},
+          "entityIds": [
+            "entity_user_admin",
+            "entity_ip_203.0.113.10"
+          ],
+          "rawRef": {
+            "artifactId": "artifact_e6ecde7e8bc2d354",
+            "parserId": "line-log",
+            "lineNumber": 2,
+            "excerpt": "2026-04-16T10:01:00Z failed login user=admin src=203.0.113.10"
+          }
+        },
+        {
+          "id": "event_e6ecde7e8bc2_003",
+          "timestamp": "2026-04-16T10:02:00.000Z",
+          "source": "inline-text.txt",
+          "eventType": "auth_success",
+          "severity": "low",
+          "actor": "admin",
+          "network": {
+            "srcIp": "203.0.113.10"
+          },
+          "process": {},
+          "entityIds": [
+            "entity_user_admin",
+            "entity_ip_203.0.113.10"
+          ],
+          "rawRef": {
+            "artifactId": "artifact_e6ecde7e8bc2d354",
+            "parserId": "line-log",
+            "lineNumber": 3,
+            "excerpt": "2026-04-16T10:02:00Z successful login user=admin src=203.0.113.10"
+          }
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_ip_203.0.113.10",
+          "type": "ip",
+          "value": "203.0.113.10",
+          "normalized": "203.0.113.10",
+          "aliases": []
+        },
+        {
+          "id": "entity_user_admin",
+          "type": "user",
+          "value": "admin",
+          "normalized": "admin",
+          "aliases": []
+        }
+      ],
+      "parserWarnings": []
+    },
+    "reasoning": {
+      "observations": [
+        {
+          "id": "observation_001",
+          "type": "unknown",
+          "value": "No high-confidence suspicious pattern was identified by the MVP heuristics.",
+          "confidence": 0.6,
+          "sourceRef": {
+            "id": "source_evidence_1",
+            "type": "adapter",
+            "locator": "evidence[0]",
+            "excerpt": "No high-confidence suspicious pattern was identified by the MVP heuristics."
+          },
+          "entityRefs": []
+        },
+        {
+          "id": "observation_002",
+          "type": "timeline_event",
+          "value": "failed login user=admin src=203.0.113.10",
+          "confidence": 0.9,
+          "sourceRef": {
+            "id": "source_timeline_1",
+            "type": "timeline",
+            "locator": "timeline[0]",
+            "excerpt": "2026-04-16T10:00:00Z failed login user=admin src=203.0.113.10"
+          },
+          "timestamp": "2026-04-16T10:00:00.000Z",
+          "entityRefs": []
+        },
+        {
+          "id": "observation_003",
+          "type": "timeline_event",
+          "value": "failed login user=admin src=203.0.113.10",
+          "confidence": 0.9,
+          "sourceRef": {
+            "id": "source_timeline_2",
+            "type": "timeline",
+            "locator": "timeline[1]",
+            "excerpt": "2026-04-16T10:01:00Z failed login user=admin src=203.0.113.10"
+          },
+          "timestamp": "2026-04-16T10:01:00.000Z",
+          "entityRefs": []
+        },
+        {
+          "id": "observation_004",
+          "type": "timeline_event",
+          "value": "successful login user=admin src=203.0.113.10",
+          "confidence": 0.9,
+          "sourceRef": {
+            "id": "source_timeline_3",
+            "type": "timeline",
+            "locator": "timeline[2]",
+            "excerpt": "2026-04-16T10:02:00Z successful login user=admin src=203.0.113.10"
+          },
+          "timestamp": "2026-04-16T10:02:00.000Z",
+          "entityRefs": []
+        },
+        {
+          "id": "observation_005",
+          "type": "indicator",
+          "value": "ipv4: 203.0.113.10",
+          "confidence": 0.92,
+          "sourceRef": {
+            "id": "source_indicator_1",
+            "type": "indicator",
+            "locator": "indicators[0]",
+            "excerpt": "203.0.113.10"
+          },
+          "entityRefs": [
+            "ipv4:203.0.113.10"
+          ]
+        },
+        {
+          "id": "observation_006",
+          "type": "analyst_note",
+          "value": "This MVP result is heuristic and should be validated with source telemetry.",
+          "confidence": 0.7,
+          "sourceRef": {
+            "id": "source_note_1",
+            "type": "adapter",
+            "locator": "notes[0]",
+            "excerpt": "This MVP result is heuristic and should be validated with source telemetry."
+          },
+          "entityRefs": []
+        },
+        {
+          "id": "observation_007",
+          "type": "analyst_note",
+          "value": "Model provider local-mock completed: Mock provider completed defensive logs review.",
+          "confidence": 0.7,
+          "sourceRef": {
+            "id": "source_note_2",
+            "type": "adapter",
+            "locator": "notes[1]",
+            "excerpt": "Model provider local-mock completed: Mock provider completed defensive logs review."
+          },
+          "entityRefs": []
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "hypothesis_001",
+          "title": "No high-confidence malicious pattern identified",
+          "status": "needs_review",
+          "confidence": 0.6,
+          "reasoningSummary": "The submitted evidence did not match a strong suspicious pattern, so the case should be reviewed with more telemetry before firm conclusions are made.",
+          "supportingObservationIds": [
+            "observation_002",
+            "observation_003",
+            "observation_004"
+          ],
+          "contradictingObservationIds": [],
+          "assumptions": [
+            "Submitted telemetry accurately represents the relevant time window.",
+            "Parsed fields and timestamps were not intentionally altered before submission."
+          ],
+          "unknowns": [
+            "Whether the observed activity was authorized by the system owner.",
+            "Whether related activity exists elsewhere in the environment."
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "id": "finding_001",
+          "title": "Log Review",
+          "severity": "low",
+          "category": "general-monitoring",
+          "confidence": 0.6,
+          "reasoningSummary": "The submitted evidence did not match a strong suspicious pattern, so the case should be reviewed with more telemetry before firm conclusions are made.",
+          "evidenceObservationIds": [
+            "observation_002",
+            "observation_003",
+            "observation_004"
+          ],
+          "recommendations": [
+            "Validate the source and timestamp of the submitted data.",
+            "Correlate the event with endpoint, identity, DNS, proxy, and firewall telemetry.",
+            "Document analyst assumptions and preserve the original evidence."
+          ],
+          "needsAnalystReview": true
+        }
+      ],
+      "reasoningRuns": [
+        {
+          "id": "reasoning_run_001",
+          "provider": "local-mock",
+          "model": "local-mock",
+          "promptVersion": "defensive-analysis-v1",
+          "inputHash": "2606fd4c131d8ece0cf7ef6e411558c29174d740463a4c6a5a2f72d92e9f3b9b",
+          "outputHash": "96a17c2b6583b35e9391d7b91eaea62852814a0f3bc1f714d686dc48cf9f1575",
+          "validationStatus": "passed",
+          "validationSummary": "Provider output passed defensive safety validation.",
+          "startedAt": "2026-04-17T22:38:18.822Z",
+          "completedAt": "2026-04-17T22:38:18.822Z"
+        }
+      ],
+      "assumptions": [
+        "Submitted telemetry accurately represents the relevant time window.",
+        "Parsed fields and timestamps were not intentionally altered before submission."
+      ],
+      "unknowns": [
+        "Whether the observed activity was authorized by the system owner.",
+        "Whether related activity exists elsewhere in the environment."
+      ]
+    },
+    "reportMarkdown": "# Log Review\n\n## Overview\nThe submitted security data was reviewed with deterministic defensive heuristics.\n\n## Severity\n**LOW** with 60% confidence.\n\n## Findings\n- No high-confidence suspicious pattern was identified by the MVP heuristics.\n\n## Evidence Reasoning\n### Findings\n- **Log Review**: The submitted evidence did not match a strong suspicious pattern, so the case should be reviewed with more telemetry before firm conclusions are made. (60% confidence; evidence: observation_002, observation_003, observation_004)\n\n### Source-Linked Facts\n- failed login user=admin src=203.0.113.10 (90% confidence, timeline[0])\n- failed login user=admin src=203.0.113.10 (90% confidence, timeline[1])\n- successful login user=admin src=203.0.113.10 (90% confidence, timeline[2])\n\n### Hypotheses\n- **No high-confidence malicious pattern identified** [needs_review]: The submitted evidence did not match a strong suspicious pattern, so the case should be reviewed with more telemetry before firm conclusions are made.\n\n## Assumptions And Unknowns\n\n### Assumptions\n- Submitted telemetry accurately represents the relevant time window.\n- Parsed fields and timestamps were not intentionally altered before submission.\n\n### Unknowns\n- Whether the observed activity was authorized by the system owner.\n- Whether related activity exists elsewhere in the environment.\n\n## Knowledge Sources\nNo knowledge sources were cited.\n\n## Normalized Events\nArtifacts: 1. Events: 3. Entities: 2.\n\n## Timeline\n| Time | Event |\n| --- | --- |\n| 2026-04-16T10:00:00.000Z | failed login user=admin src=203.0.113.10 |\n| 2026-04-16T10:01:00.000Z | failed login user=admin src=203.0.113.10 |\n| 2026-04-16T10:02:00.000Z | successful login user=admin src=203.0.113.10 |\n\n## Indicators\n| Type | Indicator |\n| --- | --- |\n| ipv4 | `203.0.113.10` |\n\n## Recommended Actions\n- Validate the source and timestamp of the submitted data.\n- Correlate the event with endpoint, identity, DNS, proxy, and firewall telemetry.\n- Document analyst assumptions and preserve the original evidence.\n\n## Notes\n- This MVP result is heuristic and should be validated with source telemetry.\n- Model provider local-mock completed: Mock provider completed defensive logs review.",
+    "notes": [
+      "This MVP result is heuristic and should be validated with source telemetry.",
+      "Model provider local-mock completed: Mock provider completed defensive logs review."
+    ]
+  },
+  "auditEntries": [
+    {
+      "id": "audit_86952df5-4b65-40de-93fe-663f9ac46d0d",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.657Z",
+      "action": "analysis.received",
+      "summary": "Received logs input for defensive analysis.",
+      "allowed": true,
+      "metadata": {
+        "mode": "logs",
+        "inputType": "inline-text",
+        "provider": "local-mock",
+        "auditEventId": "audit_event_1433041a-a32b-4b25-bc76-3513612f3e36",
+        "auditHash": "52343741299f72b824e05cc9b4c943b6945329fa7e25e520fa01fa32446aed57",
+        "auditSequence": 8
+      }
+    },
+    {
+      "id": "audit_3ccca0e7-90a4-4aaa-8c4d-2722d92ba4a3",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.711Z",
+      "action": "privacy.sensitive_data_detected",
+      "summary": "Detected 3 sensitive values and prepared provider redaction.",
+      "allowed": true,
+      "metadata": {
+        "findingTypes": {
+          "username": 3
+        },
+        "dataClass": "confidential",
+        "sourceRef": "inline-text",
+        "auditEventId": "audit_event_88e1b7e7-5a8a-4bba-b69c-59770a754eea",
+        "auditHash": "6edfd967b55c19178dd36f59dd22be51880b657f939b0b456baa218859441b83",
+        "auditSequence": 9
+      }
+    },
+    {
+      "id": "audit_98af73dd-1ae7-484a-af66-c2c8decfee44",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.749Z",
+      "action": "guardrail.allowed",
+      "summary": "Request passed safety policy as defensive.",
+      "allowed": true,
+      "metadata": {
+        "safetyDecisionId": "safety_decision_36831fde-acc2-4a18-a8be-427913a0acd1",
+        "category": "defensive",
+        "reason": "allowed_defensive",
+        "matchedSignals": [],
+        "policyVersion": "safety-policy-2026-04-16.1",
+        "auditEventId": "audit_event_0dfe8de6-4447-4292-a762-a533a6fa295a",
+        "auditHash": "7708a975151d9d3ba1129a3ecab0f42e3d93efa026bf4eac4f52a5005b15f571",
+        "auditSequence": 10
+      }
+    },
+    {
+      "id": "audit_76a3d666-2a7a-4751-900f-2b1939542f97",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.799Z",
+      "action": "ingest.normalized",
+      "summary": "Normalized 3 events from 1 artifact.",
+      "allowed": true,
+      "metadata": {
+        "artifactCount": 1,
+        "eventCount": 3,
+        "entityCount": 2,
+        "parserWarningCount": 0,
+        "auditEventId": "audit_event_79123e05-2773-4c2c-90ad-e4bc975bc6a6",
+        "auditHash": "fa82704db4972c1faac6b1e240b6aadcff2d02f678febfe2995508f48ceac9ec",
+        "auditSequence": 11
+      }
+    },
+    {
+      "id": "audit_97222443-d0b0-479a-8078-163d376162c7",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.841Z",
+      "action": "provider.completed",
+      "summary": "Provider local-mock completed defensive review.",
+      "allowed": true,
+      "metadata": {
+        "provider": "local-mock",
+        "providerCallId": "provider_call_7085b173-55bd-4adc-b4bf-1dc75ccd6870",
+        "structured": {
+          "provider": "local-mock",
+          "mode": "logs",
+          "deterministic": true
+        },
+        "structuredOutputValidation": {
+          "id": "structured_validation_ba0071e0-e4e7-456e-a37a-64e4e25db9b2",
+          "providerCallId": "provider_call_7085b173-55bd-4adc-b4bf-1dc75ccd6870",
+          "schemaName": "defensive-analysis-provider",
+          "status": "passed",
+          "reason": "Structured output included provider and mode fields.",
+          "createdAt": "2026-04-17T22:38:18.823Z"
+        },
+        "promptVersion": "defensive-analysis-v1",
+        "outputSafety": {
+          "outputSafetyId": "output_safety_6df35955-00a1-4512-ae8c-143b6bca84cf",
+          "allowed": true,
+          "blockedSegments": [],
+          "policyVersion": "safety-policy-2026-04-16.1"
+        },
+        "auditEventId": "audit_event_4315baff-4205-497b-ab09-bb713e566410",
+        "auditHash": "bc11d771b6ad621df127a5b3e481756f866a85ef4375d45550996d5a3874fc0b",
+        "auditSequence": 12
+      }
+    },
+    {
+      "id": "audit_448c9dc7-2a11-4b49-9a6f-5f047fb4e22c",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.892Z",
+      "action": "threat_intel.enriched",
+      "summary": "Enriched 1 indicator with local threat intelligence.",
+      "allowed": true,
+      "metadata": {
+        "enrichmentCount": 0,
+        "summaryCount": 0,
+        "auditEventId": "audit_event_2879d284-79a6-4db5-b2bd-7aff3163df51",
+        "auditHash": "685d6aef5b710c32c79321b574c3e7cc2eb36b37ca5c99f0cf5de1a3778b2596",
+        "auditSequence": 13
+      }
+    },
+    {
+      "id": "audit_1d7ca577-8116-4c5b-bb36-908fbbfd33f6",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.925Z",
+      "action": "reasoning.validated",
+      "summary": "Validated 7 observations, 1 hypotheses, and 1 findings.",
+      "allowed": true,
+      "metadata": {
+        "observations": 7,
+        "hypotheses": 1,
+        "findings": 1,
+        "promptVersion": "defensive-analysis-v1",
+        "auditEventId": "audit_event_c9a807b2-7cbb-4b17-a662-e9cb04668674",
+        "auditHash": "28b070ed6e1762c14674aee98d497861a34191b1d730df28fd74559e0288fc9d",
+        "auditSequence": 14
+      }
+    },
+    {
+      "id": "audit_e5fbf4c0-e93f-4fd1-a96d-efbf70f47ab8",
+      "caseId": "case_9378e493-3ff5-4229-b215-ef7f19999f26",
+      "timestamp": "2026-04-17T22:38:18.959Z",
+      "action": "analysis.completed",
+      "summary": "Completed general-monitoring analysis with low severity.",
+      "allowed": true,
+      "metadata": {
+        "severity": "low",
+        "confidence": 0.6,
+        "indicatorCount": 1,
+        "timelineCount": 3,
+        "auditEventId": "audit_event_b512051f-0c43-4221-aa2e-b1fc66a4c7c2",
+        "auditHash": "9ded749a767060268724cf7bfb42f87f8717b66109f408f7cd901697626ba59d",
+        "auditSequence": 15
+      }
+    }
+  ]
+}

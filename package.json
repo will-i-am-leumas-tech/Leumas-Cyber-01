@@ -1,0 +1,32 @@
+{
+  "name": "leumas-defensive-cyber-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace @leumas/api",
+    "dev:web": "npm run dev --workspace @leumas/web",
+    "build": "npm run build --workspace @leumas/api && npm run build --workspace @leumas/web",
+    "ci:verify": "npm run lint && npm run docs:check && npm run typecheck && npm run security:scan && npm run evals && npm test && npm run build && npm audit --omit=dev",
+    "docs:check": "tsx scripts/check-docs.ts",
+    "evals": "tsx scripts/run-evals.ts",
+    "lint": "tsx scripts/lint.ts",
+    "security:scan": "tsx scripts/security-scan.ts",
+    "security:sbom": "tsx scripts/generate-sbom.ts",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "typecheck": "tsc -p apps/api/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.5",
+    "vite": "^6.4.2",
+    "vitest": "^3.2.4"
+  }
+}

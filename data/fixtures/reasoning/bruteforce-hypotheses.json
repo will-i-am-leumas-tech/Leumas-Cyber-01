@@ -1,0 +1,10 @@
+{
+  "requiredHypothesis": {
+    "titleIncludes": "credential-access",
+    "status": "supported"
+  },
+  "requiredUnknowns": [
+    "Whether the observed activity was authorized by the system owner.",
+    "Full blast radius and affected assets are not yet confirmed."
+  ]
+}

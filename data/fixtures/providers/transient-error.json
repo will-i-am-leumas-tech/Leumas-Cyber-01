@@ -1,0 +1,6 @@
+{
+  "provider": "openai-compatible",
+  "status": 503,
+  "retryable": true,
+  "message": "Temporary provider outage fixture."
+}

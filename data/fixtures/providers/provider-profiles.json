@@ -1,0 +1,20 @@
+[
+  {
+    "id": "local-mock:local-mock-deterministic",
+    "providerId": "local-mock",
+    "label": "local-mock local-mock-deterministic",
+    "type": "mock",
+    "model": "local-mock-deterministic",
+    "tier": "mock",
+    "enabled": true,
+    "capabilities": ["json_schema", "local_only"],
+    "contextWindowTokens": 8192,
+    "maxOutputTokens": 2048,
+    "supportsStructuredOutput": true,
+    "supportsToolUse": false,
+    "latencyTargetMs": 250,
+    "safetyReviewRequired": false,
+    "dataResidency": "local",
+    "notes": ["Deterministic local provider for tests, fixtures, and offline quality gates."]
+  }
+]

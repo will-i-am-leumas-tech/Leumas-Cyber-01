@@ -1,0 +1,11 @@
+{
+  "name": "Approved lab validation scope v2",
+  "owner": "soc@example.test",
+  "approver": "security-lead@example.test",
+  "targetAllowlist": ["lab-host-01.example.test", "*.lab.example.test"],
+  "targetDenylist": ["prod-db-01.example.test"],
+  "startsAt": "2026-04-17T00:00:00.000Z",
+  "expiresAt": "2026-12-31T23:59:59.000Z",
+  "labMode": true,
+  "approvedTemplateIds": ["safe-control-validation", "identity-monitoring-replay"]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "case_member_fixture_001",
+    "caseId": "case_auth_fixture",
+    "userId": "user_analyst",
+    "role": "analyst",
+    "teamId": "team_secops",
+    "createdAt": "2026-04-17T00:00:00.000Z"
+  }
+]

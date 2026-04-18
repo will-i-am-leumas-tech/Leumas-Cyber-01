@@ -1,0 +1,6 @@
+{
+  "id": "executive-template",
+  "name": "Executive Incident Brief",
+  "audience": "executive",
+  "requiredSections": ["overview", "severity", "key-findings", "recommended-actions", "limitations"]
+}

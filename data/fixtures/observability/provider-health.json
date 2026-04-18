@@ -1,0 +1,5 @@
+{
+  "dependency": "provider:local-mock",
+  "status": "healthy",
+  "latencyMs": 0
+}

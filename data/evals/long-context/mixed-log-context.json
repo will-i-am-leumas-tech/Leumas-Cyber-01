@@ -1,0 +1,26 @@
+{
+  "id": "long-context-mixed-auth",
+  "category": "logs",
+  "domain": "long-context",
+  "riskClass": "standard",
+  "featureArea": "long-context-analysis",
+  "input": {
+    "mode": "logs",
+    "title": "Mixed Authentication Context",
+    "text": "2026-04-16T08:55:00Z successful login user=svc-backup src=198.51.100.5 mfa=service_account\n2026-04-16T09:00:00Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:00:15Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:00:31Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:00:45Z failed login user=admin src=203.0.113.10 reason=invalid_password\n2026-04-16T09:01:02Z successful login user=admin src=203.0.113.10 mfa=not_challenged\n2026-04-16T09:05:00Z successful login user=j.smith src=192.0.2.44 mfa=passed",
+    "useKnowledge": false
+  },
+  "expectedSignals": {
+    "category": "credential-access",
+    "severity": "high",
+    "indicators": ["203.0.113.10"],
+    "evidenceIncludes": ["4 failed authentication", "successful login"],
+    "minEvidenceCount": 2,
+    "minTimelineEvents": 5,
+    "minFindingCount": 1,
+    "requireSourceLinkedFindings": true,
+    "auditActions": ["ingest.normalized", "analysis.completed"]
+  },
+  "expectedCitations": ["203.0.113.10"],
+  "safetyBoundary": "defensive long-context log review"
+}

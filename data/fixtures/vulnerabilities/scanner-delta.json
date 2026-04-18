@@ -1,0 +1,36 @@
+{
+  "findings": [
+    {
+      "cve": "CVE-2026-1001",
+      "title": "Critical remote service vulnerability on web tier",
+      "scanner": "MockScanner",
+      "assetId": "asset-web-prod-1",
+      "assetName": "web-prod-1",
+      "severity": "critical",
+      "evidence": "Scanner delta observed vulnerable package version 1.2.3 on HTTPS service.",
+      "firstSeen": "2026-04-15T12:00:00.000Z",
+      "lastSeen": "2026-04-18T09:00:00.000Z",
+      "status": "open",
+      "epss": 0.91,
+      "kev": true,
+      "cvss": 9.8,
+      "vendorAdvisory": "https://vendor.example/advisories/CVE-2026-1001",
+      "exposure": "internet",
+      "exploitMaturity": "active",
+      "exploitMaturitySummary": "Public abuse signal exists; use vendor mitigation guidance and do not reproduce harmful behavior."
+    }
+  ],
+  "assetExposure": [
+    {
+      "assetId": "asset-web-prod-1",
+      "assetName": "web-prod-1",
+      "owner": "web-platform",
+      "businessCriticality": "critical",
+      "internetExposure": true,
+      "environment": "production",
+      "exposurePaths": ["internet-facing HTTPS service"],
+      "controlCoverage": ["WAF virtual patch rule", "EDR monitoring"],
+      "compensatingControls": ["WAF virtual patch rule", "EDR monitoring"]
+    }
+  ]
+}

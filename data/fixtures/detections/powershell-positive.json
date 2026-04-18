@@ -1,0 +1,16 @@
+{
+  "id": "positive_powershell_encoded",
+  "name": "Encoded PowerShell process creation",
+  "event": {
+    "timestamp": "2026-04-16T10:15:00Z",
+    "host": "WS-42",
+    "user": "CORP\\j.smith",
+    "process": {
+      "image": "powershell.exe",
+      "commandLine": "powershell.exe -NoProfile -EncodedCommand SQBFAFgA",
+      "parentImage": "winword.exe"
+    }
+  },
+  "expectedMatch": true,
+  "reason": "PowerShell process creation includes an encoded command indicator."
+}

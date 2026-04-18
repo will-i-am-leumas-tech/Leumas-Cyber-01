@@ -1,0 +1,27 @@
+{
+  "Records": [
+    {
+      "eventTime": "2026-04-16T15:00:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "PutBucketPolicy",
+      "sourceIPAddress": "203.0.113.22",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "arn": "arn:aws:sts::123456789012:assumed-role/storage-admin/session"
+      },
+      "requestParameters": {
+        "bucketName": "customer-export-bucket",
+        "bucketPolicy": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": "s3:GetObject",
+              "Resource": "arn:aws:s3:::customer-export-bucket/*"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

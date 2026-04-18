@@ -1,0 +1,31 @@
+{
+  "id": "detection_rule_invalid",
+  "intentId": "detection_intent_invalid",
+  "format": "sigma-like-json",
+  "title": "Invalid Rule Without Logsource",
+  "logic": {
+    "title": "Invalid Rule Without Logsource",
+    "id": "detection_rule_invalid",
+    "status": "experimental",
+    "description": "This rule is missing required logsource data.",
+    "detection": {
+      "selection": {},
+      "condition": "selection"
+    },
+    "fields": [],
+    "falsepositives": [],
+    "level": "high"
+  },
+  "query": "NO_DETECTION_CONDITIONS",
+  "fields": [],
+  "falsePositiveNotes": [],
+  "validationStatus": "untested",
+  "coverage": {
+    "tactic": "Execution",
+    "technique": "Command and Scripting Interpreter",
+    "dataSource": "Process Creation",
+    "confidence": 0.2
+  },
+  "exportText": "{}",
+  "createdAt": "2026-04-16T00:00:00.000Z"
+}

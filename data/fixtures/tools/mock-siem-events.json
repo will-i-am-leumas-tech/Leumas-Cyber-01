@@ -1,0 +1,32 @@
+[
+  {
+    "id": "siem_evt_001",
+    "timestamp": "2026-04-16T09:00:00Z",
+    "source": "identity",
+    "eventType": "auth_failure",
+    "user": "admin",
+    "host": "VPN-1",
+    "srcIp": "203.0.113.10",
+    "message": "Failed login for admin from 203.0.113.10"
+  },
+  {
+    "id": "siem_evt_002",
+    "timestamp": "2026-04-16T09:01:02Z",
+    "source": "identity",
+    "eventType": "auth_success",
+    "user": "admin",
+    "host": "VPN-1",
+    "srcIp": "203.0.113.10",
+    "message": "Successful login for admin from 203.0.113.10"
+  },
+  {
+    "id": "siem_evt_003",
+    "timestamp": "2026-04-16T10:15:00Z",
+    "source": "endpoint",
+    "eventType": "process_creation",
+    "user": "CORP\\j.smith",
+    "host": "WS-42",
+    "process": "powershell.exe",
+    "message": "powershell.exe launched with encoded command"
+  }
+]

@@ -1,0 +1,1 @@
+2026-04-16T10:03:00Z process image=powershell.exe command_line="Get-Service WinRM" user=admin@example.test host=admin-ws-01

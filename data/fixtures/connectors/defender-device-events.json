@@ -1,0 +1,19 @@
+[
+  {
+    "eventId": "defender_evt_001",
+    "timestamp": "2026-04-16T10:15:01Z",
+    "deviceName": "WS-42",
+    "actionType": "ProcessCreated",
+    "fileName": "powershell.exe",
+    "initiatingProcessFileName": "winword.exe",
+    "commandLine": "powershell.exe -EncodedCommand SQBFAFgA"
+  },
+  {
+    "eventId": "defender_evt_002",
+    "timestamp": "2026-04-16T10:16:12Z",
+    "deviceName": "WS-42",
+    "actionType": "NetworkConnection",
+    "remoteUrl": "bad-control.example",
+    "remoteIP": "203.0.113.24"
+  }
+]

@@ -1,0 +1,297 @@
+{
+  "id": "case_workspace_fixture",
+  "title": "Workspace Fixture PowerShell Case",
+  "createdAt": "2026-04-17T13:00:00.000Z",
+  "updatedAt": "2026-04-17T13:15:00.000Z",
+  "inputType": "pasted-json",
+  "mode": "alert",
+  "rawInputRef": "fixture:workspace",
+  "normalizedArtifacts": [],
+  "severity": "high",
+  "state": "triaging",
+  "priority": "high",
+  "tags": ["execution", "alert"],
+  "tasks": [
+    {
+      "id": "task_001",
+      "title": "Collect process tree",
+      "description": "Preserve parent and child process telemetry for the source host.",
+      "owner": "analyst",
+      "priority": "high",
+      "status": "open",
+      "linkedFindingIds": ["finding_001"],
+      "required": true,
+      "createdAt": "2026-04-17T13:03:00.000Z",
+      "updatedAt": "2026-04-17T13:03:00.000Z"
+    },
+    {
+      "id": "task_002",
+      "title": "Search for peer executions",
+      "priority": "medium",
+      "status": "done",
+      "linkedFindingIds": ["finding_001"],
+      "required": true,
+      "createdAt": "2026-04-17T13:05:00.000Z",
+      "updatedAt": "2026-04-17T13:10:00.000Z"
+    }
+  ],
+  "decisions": [],
+  "workflowTransitions": [
+    {
+      "id": "transition_001",
+      "from": "new",
+      "to": "triaging",
+      "actor": "analyst",
+      "reason": "Alert accepted for triage.",
+      "timestamp": "2026-04-17T13:01:00.000Z"
+    }
+  ],
+  "toolCalls": [],
+  "toolResults": [],
+  "actionPlans": [],
+  "approvalRequests": [],
+  "actionExecutions": [],
+  "detectionIntents": [],
+  "detectionRules": [],
+  "ruleTestCases": [],
+  "ruleValidationResults": [],
+  "reportTemplates": [],
+  "reportDrafts": [
+    {
+      "id": "report_001",
+      "caseId": "case_workspace_fixture",
+      "templateId": "technical-template",
+      "audience": "technical",
+      "title": "Workspace Fixture Report",
+      "contentMarkdown": "# Workspace Fixture Report\n\n## Overview\nEncoded PowerShell activity requires analyst review.",
+      "citations": [
+        {
+          "id": "citation_001",
+          "reportId": "report_001",
+          "claimId": "claim_001",
+          "sourceRef": "observation_001",
+          "observationId": "observation_001",
+          "findingId": "finding_001",
+          "confidence": 0.9
+        }
+      ],
+      "status": "draft",
+      "createdBy": "analyst",
+      "createdAt": "2026-04-17T13:06:00.000Z",
+      "updatedAt": "2026-04-17T13:06:00.000Z"
+    }
+  ],
+  "reportVersions": [],
+  "reportCitations": [],
+  "redactionResults": [],
+  "safetyDecisions": [
+    {
+      "id": "safety_001",
+      "layer": "input",
+      "allowed": true,
+      "category": "defensive",
+      "reason": "allowed_defensive",
+      "matchedSignals": ["alert_triage"],
+      "policyVersion": "safety-policy-v1",
+      "createdAt": "2026-04-17T13:00:30.000Z"
+    }
+  ],
+  "policyVersions": [],
+  "promptInjectionFindings": [],
+  "outputSafetyResults": [],
+  "authorizationScopes": [],
+  "validationCampaigns": [],
+  "validationObjectives": [],
+  "telemetryExpectations": [],
+  "validationResults": [],
+  "vulnerabilityFindings": [],
+  "vulnerabilityContexts": [],
+  "assetRiskProfiles": [],
+  "vulnerabilityRemediationTasks": [],
+  "riskExceptions": [],
+  "cloudAccounts": [],
+  "identityPrincipals": [],
+  "cloudEvents": [],
+  "postureFindings": [],
+  "permissionRisks": [],
+  "endpointEvents": [],
+  "processTrees": [],
+  "forensicArtifacts": [],
+  "forensicTimeline": [],
+  "sampleAnalysisSummaries": [],
+  "threatIntelSources": [],
+  "indicatorEnrichments": [],
+  "internalSightings": [],
+  "indicatorLifecycle": [],
+  "threatContextSummaries": [],
+  "agentRoles": [],
+  "agentTasks": [],
+  "agentResults": [],
+  "orchestrationRuns": [],
+  "arbitrationResults": [],
+  "sensitiveFindings": [],
+  "redactedArtifacts": [],
+  "promptPackages": [],
+  "dataClassifications": [],
+  "privacyAuditEvents": [],
+  "providerCalls": [],
+  "structuredOutputValidations": [],
+  "usageRecords": [],
+  "summary": "PowerShell ran with encoded command behavior from a document parent process.",
+  "recommendations": [
+    "Collect process ancestry and command-line telemetry.",
+    "Preserve PowerShell script block logs."
+  ],
+  "reportMarkdown": "# Workspace Fixture\n\n## Overview\nEncoded PowerShell activity requires analyst review.",
+  "result": {
+    "title": "Suspicious PowerShell Execution",
+    "severity": "high",
+    "confidence": 0.86,
+    "category": "execution",
+    "summary": "PowerShell execution includes encoded command behavior.",
+    "evidence": [
+      "PowerShell execution was observed.",
+      "Command line contains encoded-command behavior."
+    ],
+    "recommendedActions": [
+      "Collect process ancestry and command-line telemetry.",
+      "Preserve PowerShell script block logs."
+    ],
+    "indicators": [
+      {
+        "type": "ipv4",
+        "value": "203.0.113.24",
+        "normalized": "203.0.113.24"
+      }
+    ],
+    "timeline": [
+      {
+        "timestamp": "2026-04-17T13:00:00.000Z",
+        "label": "process_creation actor=CORP\\j.smith asset=WS-42",
+        "source": "fixture",
+        "raw": "powershell.exe -EncodedCommand SQBFAFgA"
+      }
+    ],
+    "ingestion": {
+      "artifacts": [],
+      "normalizedEvents": [
+        {
+          "id": "event_001",
+          "timestamp": "2026-04-17T13:00:00.000Z",
+          "source": "fixture",
+          "eventType": "process_creation",
+          "severity": "high",
+          "actor": "CORP\\j.smith",
+          "asset": "WS-42",
+          "network": {
+            "srcIp": "203.0.113.24"
+          },
+          "process": {
+            "image": "powershell.exe",
+            "parentImage": "winword.exe",
+            "commandLine": "powershell.exe -EncodedCommand SQBFAFgA"
+          },
+          "entityIds": ["entity_user_001", "entity_host_001", "entity_ip_001"],
+          "rawRef": {
+            "artifactId": "artifact_001",
+            "parserId": "json-alert",
+            "jsonPointer": "/",
+            "excerpt": "powershell.exe -EncodedCommand SQBFAFgA"
+          }
+        }
+      ],
+      "entities": [
+        {
+          "id": "entity_user_001",
+          "type": "user",
+          "value": "CORP\\j.smith",
+          "normalized": "corp\\j.smith",
+          "aliases": []
+        },
+        {
+          "id": "entity_host_001",
+          "type": "host",
+          "value": "WS-42",
+          "normalized": "ws-42",
+          "aliases": []
+        },
+        {
+          "id": "entity_ip_001",
+          "type": "ip",
+          "value": "203.0.113.24",
+          "normalized": "203.0.113.24",
+          "aliases": []
+        }
+      ],
+      "parserWarnings": []
+    },
+    "reasoning": {
+      "observations": [
+        {
+          "id": "observation_001",
+          "type": "fact",
+          "value": "PowerShell execution was observed.",
+          "confidence": 0.9,
+          "sourceRef": {
+            "id": "source_001",
+            "type": "input",
+            "locator": "json:/",
+            "excerpt": "powershell.exe -EncodedCommand SQBFAFgA"
+          },
+          "timestamp": "2026-04-17T13:00:00.000Z",
+          "entityRefs": ["entity_user_001", "entity_host_001"]
+        },
+        {
+          "id": "observation_002",
+          "type": "timeline_event",
+          "value": "Document parent process launched PowerShell.",
+          "confidence": 0.84,
+          "sourceRef": {
+            "id": "source_002",
+            "type": "timeline",
+            "locator": "event_001"
+          },
+          "timestamp": "2026-04-17T13:00:00.000Z",
+          "entityRefs": ["entity_host_001"]
+        }
+      ],
+      "hypotheses": [],
+      "findings": [
+        {
+          "id": "finding_001",
+          "title": "Suspicious PowerShell Execution",
+          "severity": "high",
+          "category": "execution",
+          "confidence": 0.86,
+          "reasoningSummary": "Encoded PowerShell launched from a document parent process.",
+          "evidenceObservationIds": ["observation_001", "observation_002"],
+          "recommendations": ["Collect script block logs."],
+          "needsAnalystReview": true
+        }
+      ],
+      "reasoningRuns": [],
+      "assumptions": [],
+      "unknowns": []
+    },
+    "reportMarkdown": "# Workspace Fixture\n\n## Overview\nEncoded PowerShell activity requires analyst review.",
+    "notes": []
+  },
+  "auditEntries": [
+    {
+      "id": "audit_001",
+      "caseId": "case_workspace_fixture",
+      "timestamp": "2026-04-17T13:00:00.000Z",
+      "action": "analysis.received",
+      "summary": "Received alert input for defensive analysis.",
+      "allowed": true
+    },
+    {
+      "id": "audit_002",
+      "caseId": "case_workspace_fixture",
+      "timestamp": "2026-04-17T13:01:00.000Z",
+      "action": "analysis.completed",
+      "summary": "Completed execution analysis with high severity.",
+      "allowed": true
+    }
+  ]
+}

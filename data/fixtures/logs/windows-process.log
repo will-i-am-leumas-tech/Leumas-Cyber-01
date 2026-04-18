@@ -1,0 +1,3 @@
+2026-04-16T10:12:00Z host=WS-42 event_id=4688 image=C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE user=CORP\j.smith
+2026-04-16T10:15:00Z host=WS-42 event_id=4688 parent=WINWORD.EXE image=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe command_line="powershell.exe -EncodedCommand SQBFAFgA"
+2026-04-16T10:18:00Z host=WS-42 event_id=4688 parent=powershell.exe image=C:\Windows\System32\cmd.exe command_line="cmd.exe /c whoami"
