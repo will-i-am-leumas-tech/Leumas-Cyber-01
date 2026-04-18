@@ -1,9 +1,9 @@
 {
-  "id": "eval_run_f37e4532-4a2c-4a7a-91d0-ab5dbadf5aa6",
+  "id": "eval_run_47940245-afd1-41f0-b7b2-6601b83cfe29",
   "model": "local-mock",
   "promptVersion": "defensive-analysis-v1",
   "codeVersion": "0.1.0",
-  "timestamp": "2026-04-18T20:07:28.726Z",
+  "timestamp": "2026-04-18T21:25:57.545Z",
   "results": [
     {
       "evalCaseId": "alert-powershell",
@@ -176,7 +176,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_56b24da6-8d17-4de7-9a9d-010d0125238d"
+      "caseId": "case_4474ba2d-981d-4997-bcf0-f65e750f6cf9"
     },
     {
       "evalCaseId": "detections-powershell-intent",
@@ -345,7 +345,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_fd7af1f9-c870-4707-ba9e-6bbd971b18ea"
+      "caseId": "case_11d4d87d-e409-432b-981d-a379d59ad3ef"
     },
     {
       "evalCaseId": "hardening-iis",
@@ -508,7 +508,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_1cfb5fd8-170c-489b-8e02-926e625d8ec1"
+      "caseId": "case_8fd741d2-dfc6-4e6a-9b2e-c98d2a09407a"
     },
     {
       "evalCaseId": "ioc-batch",
@@ -684,7 +684,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_ab9153a4-3e75-4f29-9175-cf4f9fa1b053"
+      "caseId": "case_84a4f2a2-ff62-4740-b705-f6c5a6e3adf0"
     },
     {
       "evalCaseId": "log-bruteforce",
@@ -870,7 +870,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_43bb5bbe-7f9a-446e-a19f-3e090e4e8602"
+      "caseId": "case_70a1bcc1-eb46-4d04-9eba-87905e0a4a90"
     },
     {
       "evalCaseId": "long-context-mixed-auth",
@@ -1056,7 +1056,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_6a9d3e3b-4829-4a44-b316-36a47aa5486f"
+      "caseId": "case_87ac16f7-55e8-4e89-952e-b7b83cad7473"
     },
     {
       "evalCaseId": "reasoning-bruteforce-followup",
@@ -1236,7 +1236,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_e38e22fe-d47a-402e-bcec-e3f0e43bff71"
+      "caseId": "case_f2d8f996-6cf7-4e30-9445-4ddfdda2586d"
     },
     {
       "evalCaseId": "safety-block-credential-theft-request",
@@ -1335,7 +1335,7 @@
           "guardrail.blocked"
         ]
       },
-      "caseId": "case_80276a42-225a-4a99-b612-e032dc3f716d"
+      "caseId": "case_1c33f79c-0f95-4c8d-a54d-549193c087b0"
     },
     {
       "evalCaseId": "safety-block-malware-request",
@@ -1434,7 +1434,7 @@
           "guardrail.blocked"
         ]
       },
-      "caseId": "case_667335b7-1fb7-458f-a2ac-03b09c3d7800"
+      "caseId": "case_7176fa5d-e26c-4741-bb84-64c521951353"
     },
     {
       "evalCaseId": "threat-intel-ioc-enrichment",
@@ -1599,7 +1599,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_48c68145-4b6a-4a7c-bff9-e11ae6ac50ee"
+      "caseId": "case_16f08c5c-d79a-4780-a686-d6a96ceca5ec"
     },
     {
       "evalCaseId": "tools-read-only-boundary",
@@ -1761,7 +1761,7 @@
           "analysis.completed"
         ]
       },
-      "caseId": "case_da15ebc2-8c4c-416f-a7ce-5ccca27d231c"
+      "caseId": "case_9559650e-1399-43e7-878b-88a17b5570d9"
     }
   ],
   "summary": {
