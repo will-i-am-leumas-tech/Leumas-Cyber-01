@@ -18,6 +18,8 @@ export const openApiDocument = {
     { name: "safety", description: "Safety policy evaluation and case safety evidence." },
     { name: "providers", description: "Model provider registry, health, and usage." },
     { name: "tools", description: "Tooling and read-only security connector operations." },
+    { name: "actions", description: "Approval queues and guarded response actions." },
+    { name: "collaboration", description: "Analyst notes, mentions, and collaboration audit records." },
     { name: "ingestion", description: "Evidence source registration, ingestion jobs, and case evidence linking." },
     { name: "detections", description: "Detection rule generation, validation, corpus testing, and deployment tracking." },
     { name: "validation", description: "Authorized validation scopes, campaigns, benign replay, and evidence reports." },
@@ -104,6 +106,66 @@ export const openApiDocument = {
         responses: {
           "200": {
             description: "Stored case record."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      }
+    },
+    "/cases/queue": {
+      get: {
+        tags: ["cases"],
+        operationId: "listCaseQueue",
+        summary: "List SOC case queue items with SLA, approval, safety, note, and grounding flags.",
+        responses: {
+          "200": {
+            description: "SOC case queue items."
+          }
+        }
+      }
+    },
+    "/cases/{id}/notes": {
+      get: {
+        tags: ["collaboration"],
+        operationId: "listCaseNotes",
+        summary: "List audited analyst notes for a case.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Analyst notes for the case."
+          },
+          "404": {
+            description: "Case was not found."
+          }
+        }
+      },
+      post: {
+        tags: ["collaboration"],
+        operationId: "createCaseNote",
+        summary: "Create an audited analyst note with sensitive-value redaction.",
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            schema: {
+              type: "string"
+            }
+          }
+        ],
+        responses: {
+          "200": {
+            description: "Created note and updated case."
           },
           "404": {
             description: "Case was not found."
@@ -247,6 +309,30 @@ export const openApiDocument = {
         }
       }
     },
+    "/providers/usage": {
+      get: {
+        tags: ["providers"],
+        operationId: "getProviderUsage",
+        summary: "Return provider usage records and aggregate summaries.",
+        responses: {
+          "200": {
+            description: "Provider usage records and summaries."
+          }
+        }
+      }
+    },
+    "/admin/dashboards/model-quality": {
+      get: {
+        tags: ["admin-access"],
+        operationId: "getModelQualityDashboard",
+        summary: "Return SOC model-quality, provider, safety, case-flow, and grounding metrics.",
+        responses: {
+          "200": {
+            description: "Model-quality dashboard metrics."
+          }
+        }
+      }
+    },
     "/providers/comparisons": {
       get: {
         tags: ["providers"],
@@ -265,6 +351,18 @@ export const openApiDocument = {
         responses: {
           "200": {
             description: "Provider comparison scorecard."
+          }
+        }
+      }
+    },
+    "/approvals": {
+      get: {
+        tags: ["actions"],
+        operationId: "listApprovals",
+        summary: "List pending or resolved action and sandbox approval queue items.",
+        responses: {
+          "200": {
+            description: "Approval queue items."
           }
         }
       }
